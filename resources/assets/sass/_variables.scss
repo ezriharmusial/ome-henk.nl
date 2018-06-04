@@ -1,0 +1,127 @@
+
+// Import Bulma's initial variables
+@import "../../../node_modules/bulma/sass/utilities/initial-variables.sass";
+@import "../../../node_modules/bulma/sass/utilities/functions.sass";
+
+/** Box Model */
+$spacer: 2rem;
+
+/** Colors */
+// $primary: #ffd400;
+// $secondary: #868e96 !default;
+// $danger: #da251d;
+// $warning: #f3750a;
+// $success: #009a3f;
+// $calm: #63bda1 !default;
+// $info: #17a2b8;
+// $light: #f8f9fa;
+// $dark: #171717;
+// $black: #000;
+
+// $primary-invert: $black !default;
+// $secondary-invert: $black !default;
+// $calm-invert: $white !default;
+
+@import "../../../node_modules/bulma/sass/utilities/derived-variables.sass";
+@import "../../../node_modules/bulma/sass/utilities/animations.sass";
+@import "../../../node_modules/bulma/sass/utilities/mixins.sass";
+@import "../../../node_modules/bulma/sass/utilities/controls.sass";
+
+// $colors: map-merge(
+//   (
+//     "secondary": ($secondary,
+//     $secondary-invert),
+//     "calm": ($calm,
+//     $calm-invert),
+//   ),
+//   $colors
+// );
+
+/** Backgrounds */
+// $background: $grey-darker;
+// $body-background-color: $black;
+// $body-color: $light;
+// $footer-background-color: $success;
+
+/** Text */
+// $text: $light;
+// $text-strong: $grey-lighter;
+
+/** Link */
+// $link: $primary;
+// $link-invert: $primary-invert;
+// $link-visited: $secondary;
+// $link-hover: $grey-lighter;
+// $link-hover-border: $grey-dark;
+// $link-focus: $grey-lighter;
+// $link-focus-border: $primary;
+// $link-active: $grey-lighter;
+// $link-active-border: $grey-light;
+
+/** Content */
+// $content-heading-color: $primary;
+
+/** Titles */
+// $title-color: $white;
+// $subtitle-color: $grey-lighter;
+
+/** Borders */
+// $border: $grey;
+// $border-hover: $grey-lighter;
+
+/** Navbar */
+// $navbar-background-color: $dark;
+// $navbar-dropdown-background-color: $dark;
+// $navbar-item-color: $grey-lighter;
+// $navbar-item-hover-color  $link
+// $navbar-item-hover-background-color: $grey-darker;
+// $navbar-item-active-color: $light;
+// $navbar-item-active-background-color  transparent
+// $navbar-item-img-max-height 1.75rem
+// $navbar-tab-hover-background-color  transparent
+// $navbar-tab-hover-border-bottom-color $link
+// $navbar-tab-active-color  $link
+// $navbar-tab-active-background-color transparent
+// $navbar-tab-active-border-bottom-color  $link
+// $navbar-tab-active-border-bottom-style  solid
+// $navbar-tab-active-border-bottom-width  3px
+// $navbar-dropdown-background-color: $grey-dark;
+// $navbar-dropdown-border-top 1px solid $border
+// $navbar-dropdown-offset -4px
+// $navbar-dropdown-arrow  $link
+// $navbar-dropdown-radius $radius-large
+// $navbar-dropdown-z  20
+// $navbar-dropdown-boxed-radius $radius-large
+// $navbar-dropdown-boxed-shadow 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+// $navbar-dropdown-item-hover-color $black
+// $navbar-dropdown-item-hover-background-color  $background
+// $navbar-dropdown-item-active-color  $link
+// $navbar-dropdown-item-active-background-color $background
+// $navbar-divider-background-color  $border
+
+/** Dropdown */
+// $dropdown-content-background-color: $grey-darker;
+// $dropdown-item-hover-background-color: $grey-dark;
+
+/** Box */
+// $box-background-color: $dark;
+
+/** Card */
+// $card-background-color: $dark;
+
+/** Modal */
+// $modal-card-body-background-color: $grey-dark;
+
+/** Pagination */
+// $pagination-color: $grey;
+// $pagination-hover-color: $grey-lighter;
+// $pagination-hover-border-color: $grey-lighter;
+// $pagination-focus-color: $primary;
+// $pagination-focus-border-color: $primary;
+// $pagination-active-color: $black;
+// $pagination-active-border-color: $white;
+// $pagination-current-color: $black;
+// $pagination-current-background-color: $white;
+// $pagination-current-border-color: $primary;
+// $pagination-ellipsis-color: $grey;
+
