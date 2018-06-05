@@ -33,6 +33,8 @@ Blog
                           </div>
                         </section>
                         @endforeach
+                        @guest
+                        @else
                         <section class="media">
                           <figure class="media-left">
                             <p class="image is-64x64">
@@ -55,6 +57,7 @@ Blog
                             </form>
                           </div>
                         </section>
+                        @endguest
                     </div>
 @endsection
 
