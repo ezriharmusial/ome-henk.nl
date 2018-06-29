@@ -1,13 +1,10 @@
 @extends ('layouts.master')
 
 @section ('title')
-{{-- <figure class="is-image is-square">
-    <img src="images\logo.svg" alt="" style="width: 25vw;">
-</figure> --}}
-Blog
+{{ $post->title }}
 @endsection
 @section ('subtitle')
-{{ $post->title }}
+{{ $post->subtitle }}
 @endsection
 
 @section ('content')
@@ -46,12 +43,21 @@ Blog
                                 {{ csrf_field() }}
                                 <div class="field">
                                   <p class="control">
-                                    <textarea id="body" name="body" class="textarea" placeholder="Add a comment..." required></textarea>
+                                    <textarea id="body" name="body" class="textarea" placeholder="Plaats opmerking..." required></textarea>
                                   </p>
                                 </div>
+                                @if ($errors->has('subtitle'))
+                                <p class="help is-danger">
+                                    {{ $errors->first('body') }}
+                                </p>
+                                @else
+                                <p class="help">
+                                    Geef een korte aanvullende beschrijving, maximaal 30 Letters.
+                                </p>
+                                @endif
                                 <div class="field">
                                   <p class="control">
-                                    <button class="button">Post comment</button>
+                                    <button class="button">Plaats opmerking</button>
                                   </p>
                                 </div>
                             </form>
@@ -61,6 +67,7 @@ Blog
                     </div>
 @endsection
 
-@section ('footer')
+@section ('sidebar-content')
+    @include ('auth.partials.article-info')
 @endsection
 

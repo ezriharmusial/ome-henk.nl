@@ -1,5 +1,10 @@
 @extends ('layouts.master')
 
+@section ('head-tail')
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+@endsection
+
 @section ('title')
         <span class="icon">
             <i class="fas fa-plus"></i>
@@ -20,8 +25,24 @@ Schrijf een nieuw artikel voor
         <span>Artikel Aanmaken</span>
     </h2>
     <p>Vul de onderstaande gegevens in om een nieuwe Artikel aan te maken.</p>
-    <form method="POST" action="{{ route('storePost', $page) }}">
+    <form method="POST" action="{{ route('posts.store', $page) }}" enctype="multipart/form-data">
         {{ csrf_field() }}
+        <div class="field">
+          <div class="file is-boxed">
+            <label class="file-label">
+              <input class="file-input" type="file" name="featured_image">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Artikel Foto Uploaden
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
+
         <div class="field">
             <label class="label">Artikel Titel</label>
             <div class="control is-expanded">

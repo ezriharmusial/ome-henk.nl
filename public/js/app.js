@@ -60,40 +60,19 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 1:
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
+__webpack_require__(1);
+module.exports = __webpack_require__(10);
 
 
 /***/ }),
-
-/***/ 10:
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -103,7 +82,7 @@ module.exports = g;
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(11);
+__webpack_require__(2);
 
 // window.Vue = require('vue');
 
@@ -120,12 +99,11 @@ __webpack_require__(11);
 // });
 
 /***/ }),
-
-/***/ 11:
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(12);
+window._ = __webpack_require__(3);
 // window.Popper = require('popper.js').default;
 
 // *
@@ -138,7 +116,7 @@ try {
   //     window.$ = window.jQuery = require('jquery');
 
   //     require('bootstrap');
-  __webpack_require__(14);
+  __webpack_require__(6);
 } catch (e) {}
 
 /**
@@ -183,8 +161,7 @@ try {
 // });
 
 /***/ }),
-
-/***/ 12:
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -17294,11 +17271,37 @@ try {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(13)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(5)(module)))
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports) {
 
-/***/ 13:
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17326,14 +17329,13 @@ module.exports = function(module) {
 
 
 /***/ }),
-
-/***/ 14:
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(15);
+var content = __webpack_require__(7);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -17341,7 +17343,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(16)(content, options);
+var update = __webpack_require__(8)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -17358,23 +17360,13 @@ if(false) {
 }
 
 /***/ }),
+/* 7 */
+/***/ (function(module, exports) {
 
-/***/ 15:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(46)(false);
-// imports
-
-
-// module
-exports.push([module.i, "[data-action=\"iconPicker\"] {\n  width: 0;\n  height: 0;\n  display: block;\n  opacity: 0;\n  top: -999px;\n  position: absolute; }\n\n.iconpicker-preview {\n  border-radius: 100%;\n  background-color: whitesmoke; }\n  .iconpicker-preview:hover {\n    cursor: pointer; }\n  .iconpicker-preview .iconpicker-icon-preview {\n    color: grey;\n    font-size: 1.5em; }\n\n.iconpicker-modal .modal-card .modal-card-head {\n  background: #00d1b2;\n  color: white;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  padding: 1rem; }\n  .iconpicker-modal .modal-card .modal-card-head .modal-card-title {\n    font-size: 1.2em;\n    color: white; }\n  .iconpicker-modal .modal-card .modal-card-head .iconpicker-search {\n    background-color: rgba(255, 255, 255, 0.5);\n    border-radius: 2em;\n    box-shadow: none;\n    border: 0.1em solid rgba(255, 255, 255, 0.3);\n    margin: 0 2em;\n    padding: .3em 1em;\n    color: grey; }\n\n.iconpicker-modal .iconpicker-sets {\n  flex-shrink: 0;\n  background-color: whitesmoke;\n  font-size: .8em;\n  margin: 0; }\n\n.iconpicker-modal .modal-card-body {\n  padding: 0; }\n  .iconpicker-modal .modal-card-body .iconpicker-icons {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 1em; }\n    .iconpicker-modal .modal-card-body .iconpicker-icons [data-icon] {\n      display: block;\n      width: 48px;\n      height: 48px;\n      text-align: center;\n      padding: .5rem; }\n      .iconpicker-modal .modal-card-body .iconpicker-icons [data-icon] .iconpicker-icon-preview {\n        font-size: 1.4em; }\n", ""]);
-
-// exports
-
+throw new Error("Module build failed: \n    color: $grey\n          ^\n      Undefined variable: \"$grey\".\n      in /var/www/sandbox/ome-henk.nl/node_modules/bulma-iconpicker/dist/bulma-iconpicker.sass (line 14, column 12)");
 
 /***/ }),
-
-/***/ 16:
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -17420,7 +17412,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(17);
+var	fixUrls = __webpack_require__(9);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -17733,8 +17725,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-
-/***/ 17:
+/* 9 */
 /***/ (function(module, exports) {
 
 
@@ -17829,104 +17820,10 @@ module.exports = function (css) {
 
 
 /***/ }),
-
-/***/ 44:
+/* 10 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
-/***/ }),
-
-/***/ 46:
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(10);
-module.exports = __webpack_require__(44);
-
-
 /***/ })
-
-/******/ });
+/******/ ]);

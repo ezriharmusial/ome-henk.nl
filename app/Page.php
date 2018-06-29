@@ -23,9 +23,10 @@ class Page extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function addPost($title, $subtitle, $content, $published)
+    public function addPost($featured_image, $title, $subtitle, $content, $published)
     {
         $this->posts()->create([
+            'featured_image' => $featured_image,
             'title' => $title,
             'subtitle' => $subtitle,
             'content' => $content,

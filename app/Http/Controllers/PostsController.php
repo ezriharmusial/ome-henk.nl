@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Post;
 use App\Page;
+use Session;
+use Image;
 
 class PostsController extends Controller
 {
@@ -41,14 +45,27 @@ class PostsController extends Controller
             'published' => 'required'
         ]);
 
+        if (request()->hasFile('featured_image'))
+        {
+            $image = request()->file('featured_image');
+            $featured_image_filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $featured_image_filename);
+            Image::make($image)->resize(1200, 675)->save($location);
+        } else {
+            $featured_image_filename = null;
+        }
+
         $page->addPost(
+            $featured_image_filename, // request('featured_image'),
             request('title'),
             request('subtitle'),
             request('content'),
             request('published')
         );
 
-        return back();
+        Session::flash('success', 'Artikel toegevoegd.');
+
+        return redirect(route('showPage' , $page->slug));
     }
 
 }

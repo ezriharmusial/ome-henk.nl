@@ -1,5 +1,5 @@
 @extends ('layouts.master')
-
+@section ('window-title', '| pagina bewerken')
 @section ('head-tail')
   <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
   <script>tinymce.init({ selector:'textarea' });</script>
@@ -9,10 +9,10 @@
         <span class="icon">
             <i class="fas fa-plus"></i>
         </span>
-        <span>Pagina aanmaken?</span>
+        <span>{{ $page->title }}</span>
 @endsection
 @section ('subtitle')
-Vul de onderstaande gegevens in om een nieuwe pagina aan te maken.
+Pagina bewerken
 @endsection
 
 @section ('content')
@@ -46,7 +46,7 @@ Vul de onderstaande gegevens in om een nieuwe pagina aan te maken.
             <div class="field">
                 <label class="label">Pagina Titel</label>
                 <div class="control is-expanded">
-                    <input class="input" id="title" name="title" type="text" placeholder="Titel van Pagina" value="" required>
+                    <input class="input" id="title" name="title" type="text" placeholder="Titel van Pagina" value="{{ $page->title }}" required>
                 </div>
                 @if ($errors->has('title'))
                 <p class="help is-danger">
@@ -62,7 +62,7 @@ Vul de onderstaande gegevens in om een nieuwe pagina aan te maken.
             <div class="field">
                 <label class="label">Subtitel</label>
                 <div class="control">
-                    <input class="input" id="subtitle" name="subtitle" type="text" placeholder="Subtitel van Pagina" value="" required>
+                    <input class="input" id="subtitle" name="subtitle" type="text" placeholder="Subtitel van Pagina" value="{{ $page->subtitle }}" required>
                 </div>
                 @if ($errors->has('subtitle'))
                 <p class="help is-danger">
@@ -78,7 +78,7 @@ Vul de onderstaande gegevens in om een nieuwe pagina aan te maken.
             <div class="field">
                 <label class="label">Pagina Inhoud</label>
                 <div class="control">
-                    <textarea class="textarea" id="content" name="content" placeholder="Pagina inhoud" required></textarea>
+                    <textarea class="textarea" id="content" name="content" placeholder="Pagina inhoud" required>{{ $page->content }}</textarea>
                 </div>
                 @if ($errors->has('content'))
                 <p class="help is-danger">
@@ -107,29 +107,29 @@ Vul de onderstaande gegevens in om een nieuwe pagina aan te maken.
             </div>
 
 
+
             <div class="field">
                 <label class="label">Publicatie status?</label>
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="published" value=0>
+                        <input @if ( $page->published ) checked="checked" @endif type="radio" name="published" value=0>
                         Concept (Niet zichtbaar voor publiek)
                     </label>
                     <br />
                     <label class="radio">
-                        <input checked="checked" type="radio" name="published" value=1>
+                        <input @if ( $page->published ) checked="checked" @endif type="radio" name="published" value=1>
                         Gepubliceerd (Zichtbaar voor publiek)
                     </label>
                 </div>
             </div>
 
-
             <div class="field is-grouped">
               <div class="control">
-                <button type="submit" class="button is-link">
+                <button type="submit" class="button is-success">
                     <span class="icon">
-                        <i class="fas fa-plus"></i>
+                        <i class="fas fa-save"></i>
                     </span>
-                    <span>Pagina Aanmaken</span>
+                    <span>Pagina Opslaan</span>
                 </button>
               </div>
             </div>

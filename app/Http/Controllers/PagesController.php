@@ -8,17 +8,12 @@ class PagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
-    }
-
-    public function index()
-    {
-        return view('pages.index');
+        $this->middleware('auth')->except(['show']);
     }
 
     public function show(Page $page)
     {
-        return view('pages.index', compact('page'));
+        return view('pages.show', compact('page'));
     }
 
     public function create()
@@ -42,5 +37,21 @@ class PagesController extends Controller
         );
 
         return redirect('/');
+    }
+
+    public function edit(Page $page)
+    {
+        // dd($page);
+        return view('pages.edit')->with('page', $page);
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function destroy()
+    {
+
     }
 }
