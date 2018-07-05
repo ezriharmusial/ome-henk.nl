@@ -1,10 +1,10 @@
 @extends ('layouts.master')
-@section ('window-title', '| '. $page->title )
+
 @section ('title')
 {{--                 <figure class="is-image is-square">
                     <img src="images\logo.svg" alt="" style="width: 25vw;">
                 </figure> --}}
-                <span class="icon is-medium">
+                <span class="icon">
                     <i class="{{ $page->title_icon }}"></i>
                 </span>
                 <span>{{ $page->title }}</span>
@@ -15,7 +15,7 @@
 
 @section ('content')
                 <div class="column">
-                    <article class="content">
+                    <section class="section">
                         <h2 class="title">
                             <span class="icon">
                                 <i class="{{ $page->title_icon }}"></i>
@@ -24,25 +24,28 @@
                         </h2>
                         <h3 class="subtitle has-text-weight-light"><span>{{ $page->subtitle }}</span></h3>
                         {!! $page->content !!}
-                    </articls>
+                    </section>
 @if ($page->has_articles)
 @auth
+                    <section class="section">
                         <a href="{{ route('posts.create', $page->slug) }}" class="button is-primary is-fullwidth">
-                            <span class="icon is-small">
+                            <span class="icon">
                                 <i class="fa fa-plus"></i>
                             </span>
                             <span>Nieuw Artikel</span>
                         </a>
+                    </section>
 @endauth
+                    <section class="section">
 @foreach ($page->posts as $post)
                         @include ('posts.article')
 @endforeach
+                    </section>
 @endif
                 </div>
 @endsection
 
 @section ('sidebar-content')
-    @include ('auth.partials.article-info')
 @endsection
 
 

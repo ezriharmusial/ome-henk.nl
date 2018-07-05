@@ -1,16 +1,18 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Slabo:300,400,600");
+// @import url("https://fonts.googleapis.com/css?family=Slabo:300,400,600");
 
 // Variables
 @import "variables";
 
 // Bulma
 @import "~bulma";
-@import "~bulma-iconpicker";
+@import "~bulma-iconpicker/dist/css/bulma-iconpicker.sass";
+@import "~bulma-switch/src/sass/index.sass";
 
 @import "bulma/elements/notification";
 
 
 // Import Partials
 @import "navbar";
+@import "~quill/dist/quill.snow.css";

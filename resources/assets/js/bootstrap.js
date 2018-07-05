@@ -12,8 +12,10 @@ try {
 //     window.$ = window.jQuery = require('jquery');
 
 //     require('bootstrap');
-require('bulma-iconpicker');
+window.bulmaIconpicker = require('bulma-iconpicker');
+window.Quill = require('quill'); //quill/dist/quill.min.js";
 } catch (e) {}
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

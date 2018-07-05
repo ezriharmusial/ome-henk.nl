@@ -1,4 +1,4 @@
-                        <article class="columns">
+                        <article class="section columns">
 @if (Route::current()->getName() == 'showPage' && isset($post->featured_image))
                             <div class="column is-4">
                                 <figure class="image is-16by9" style="background-image: url('/images/{{ $post->featured_image }}');background-size: cover;">

@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Page;
+use View;
+use Session;
 
 class PagesController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->except(['show']);
+    }
+
+    public function index(Page $page)
+    {
+        $page = Page::first();
+        return view('pages.index', compact('page') );
     }
 
     public function show(Page $page)
@@ -18,10 +27,11 @@ class PagesController extends Controller
 
     public function create()
     {
-        return view('pages.create');
+        $page = new Page;
+        return view('pages.create', compact('page'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
 
         $this->validate(request(), [
@@ -29,8 +39,17 @@ class PagesController extends Controller
             'title' => 'required',
             'subtitle' => 'required',
             'content' => 'required',
-            'has_articles' => 'required'
         ]);
+
+        // dd($request);
+
+        $title_icon = $request['title_icon'];
+        $title_icon = str_replace('iconpicker-icon-preview ', '', $title_icon);
+        $title_icon = str_replace('fa-icon ', '', $title_icon);
+
+        $request['title_icon'] = $title_icon;
+        $request['published'] = (empty($request['published'])) ? 0 : 1 ;
+        $request['has_articles'] = (empty($request['has_articles'])) ? 0 : 1 ;
 
         auth()->user()->publishPage(
             new Page(request(['title_icon', 'title', 'subtitle', 'content', 'has_articles']))
@@ -45,13 +64,45 @@ class PagesController extends Controller
         return view('pages.edit')->with('page', $page);
     }
 
-    public function update()
+    public function update(Request $request, $slug)
     {
+        $this->validate(request(), [
+            'title_icon' => 'required',
+            'title' => 'required',
+            'subtitle' => 'required',
+            'content' => 'required',
+        ]);
+
+        $page = Page::where('slug', $slug)->first();
+
+        // dd($request);
+
+        // Iconpicker hack
+        $title_icon = $request['title_icon'];
+        $title_icon = str_replace('iconpicker-icon-preview ', '', $title_icon);
+        $title_icon = str_replace('fa-icon ', '', $title_icon);
+
+        $page->title_icon = $title_icon;
+        $page->title = $request['title'];
+        $page->subtitle = $request['subtitle'];
+        $page->content = $request['content'];
+        $page->published = (empty($request['published'])) ? 0 : 1 ;
+        $page->has_articles = (empty($request['has_articles'])) ? 0 : 1 ;
+
+        $page->save();
+
+        Session::flash('success', 'Pagina opgeslagen');
+
+        return redirect()->route('pages.show', $page->slug);
 
     }
 
-    public function destroy()
+    public function destroy($slug)
     {
-
+        dd($slug);
+        $page = Page::where('slug', $slug)->first();
+        $pagetitle = $page->title;
+        $page->delete();
+        return redirect( route('index') )->with('success', 'Pagina <em>' . $pagetitle . '</em> is verwijderd.');
     }
 }

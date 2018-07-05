@@ -12,6 +12,10 @@
 */
 // Gebruikerspaginas
 Auth::routes();
+// Plaatjes
+Route::get('/media','MediaController@create')->name('media.create');
+Route::post('/media','MediaController@store')->name('media.store');
+Route::delete('/media/{id}/verwijderen','MediaController@destroy')->name('media.destroy');
 
 // Dashboard?
 Route::get('/home', 'HomeController@index');
@@ -19,11 +23,11 @@ Route::get('/home', 'HomeController@index');
 // Paginas
 Route::post('/pagina', 'PagesController@store')->name('pages.store');
 Route::get('/pagina/aanmaken', 'PagesController@create')->name('pages.create');
-Route::get('/', 'PagesController@show')->name('home');
+Route::get('/', 'PagesController@index')->name('index');
 Route::get('/{page}', 'PagesController@show')->name('pages.show');
 Route::get('/{page}/bewerken', 'PagesController@edit')->name('pages.edit');
 Route::match(['put', 'patch'], '/{page}', 'PagesController@update')->name('pages.update');
-Route::post('/{page}/verwijderen', 'PagesController@destroy')->name('pages.destroy');
+Route::delete('/{page}/verwijderen', 'PagesController@destroy')->name('pages.destroy');
 
 // Pagina Artikeltjes
 Route::post('/{page}/artikel', 'PostsController@store')->name('posts.store');
@@ -34,5 +38,7 @@ Route::match(['put', 'patch'], '/{page}/{post}', 'PostsController@update')->name
 Route::post('/{page}/{post}/verwijderen', 'PostsController@destroy')->name('posts.destroy');
 // Route::resource('posts', 'PostsController');
 
+
 // Artikel Commentaar
 Route::post('/{page}/{post}/reacties', 'CommentsController@store')->name('storeComment');
+

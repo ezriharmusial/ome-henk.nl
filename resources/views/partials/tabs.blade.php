@@ -5,7 +5,7 @@
 
                     <li{{ (isset($page) && $tab['id'] == $page->id) ? ' class=is-active' : '' }}>
                         <a href="/{{ $tab['slug'] }}" title="{{ $tab['title'] }}: {{ $tab['subtitle'] }}">
-                            <span class="icon">
+                            <span class="icon is-small">
                                 <i class="{{ $tab['title_icon'] }}"></i>
                             </span>
                             <span>{{ $tab['title'] }}</span>
@@ -17,8 +17,8 @@
 
                     <li{{ (Route::current()->getName() == 'pages.create') ? ' class=is-active' : '' }}>
                         <a href="{{ route('pages.create') }}">
-                            <span class="icon">
-                                <i class="fas fa-plus"></i>
+                            <span class="icon is-small">
+                                <i class="fa fa-plus"></i>
                             </span>
                             <span>Pagina Aanmaken</span>
                         </a>
@@ -27,7 +27,7 @@
         {{--             <li>
                         <a>
                             <span class="icon">
-                                <i class="fas fa-user-circle"></i>
+                                <i class="fa fa-user-circle"></i>
                             </span>
                             <span>Vraag het Ome Henk</span>
                         </a>
@@ -35,7 +35,7 @@
                     <li class="is-active">
                         <a>
                             <span class="icon">
-                                <i class="fas fa-screwdriver"></i>
+                                <i class="fa fa-screwdriver"></i>
                             </span>
                             <span>Werken is Gezond</span>
                         </a>
@@ -43,7 +43,7 @@
                     <li>
                         <a>
                             <span class="icon">
-                                <i class="fas fa-utensils"></i>
+                                <i class="fa fa-utensils"></i>
                             </span>
                             <span>Eet & Drink</span>
                         </a>
@@ -51,7 +51,7 @@
                     <li>
                         <a>
                             <span class="icon">
-                                <i class="fas fa-shopping-basket"></i>
+                                <i class="fa fa-shopping-basket"></i>
                             </span>
                             <span>Webshop</span>
                         </a>

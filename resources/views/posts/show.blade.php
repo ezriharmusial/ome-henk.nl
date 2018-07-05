@@ -40,7 +40,7 @@
                           </figure>
                           <div class="media-content">
                             <form method="POST" action="{{ route( 'storeComment', [ $page->slug, $post->slug] ) }}">
-                                {{ csrf_field() }}
+                                @csrf
                                 <div class="field">
                                   <p class="control">
                                     <textarea id="body" name="body" class="textarea" placeholder="Plaats opmerking..." required></textarea>

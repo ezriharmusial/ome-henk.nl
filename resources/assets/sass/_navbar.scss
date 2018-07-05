@@ -32,3 +32,15 @@
     }
   }
 }
+
+.hero.is-success {
+    .navbar-dropdown {
+        .navbar-item {
+            color: hsl(141, 71%,  48%) !important;
+
+            &:hover {
+                color: white !important;
+            }
+        }
+    }
+}

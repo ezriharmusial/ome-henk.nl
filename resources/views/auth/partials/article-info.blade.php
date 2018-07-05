@@ -19,7 +19,7 @@ if (Route::current()->getName() == 'pages.show' ){
                             <p class="control">
                                 <a href="{{ url()->full() }}/bewerken" class="button is-link">
                                    <span class="icon">
-                                        <i class="fas fa-save"></i>
+                                        <i class="fa fa-save"></i>
                                     </span>
                                     <span>Opslaan</span>
                                 </a>
@@ -31,7 +31,7 @@ if (Route::current()->getName() == 'pages.show' ){
                                 <a href="{{ route('posts.show') }}" class="button is-link">
                                 @endif
                                    <span class="icon">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="fa fa-edit"></i>
                                     </span>
                                     <span>Annuleren</span>
                                 </a>
@@ -40,17 +40,22 @@ if (Route::current()->getName() == 'pages.show' ){
                             <p class="control">
                                 <a href="{{ url()->full() }}/bewerken" class="button is-link">
                                    <span class="icon">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="fa fa-edit"></i>
                                     </span>
                                     <span>Bewerken</span>
                                 </a>
                             </p>
-                            <form method="post" action="{{ url()->full() }}/verwijderen" >
+                            @if (Route::current()->getName() == 'pages.show')
+                            <form method="post" action="{{action('PagesController@destroy', $page->slug)}}" >
+                            @elseif (Route::current()->getName() == 'posts.show')
+                            <form method="post" action="{{action('PostsController@destroy', $post->slug)}}" >
+                            @endif
+                                @csrf
                                 <input name="_method" type="hidden" value="DELETE">
                                 <p class="control">
                                     <button class="button is-danger" type="submit">
                                        <span class="icon">
-                                            <i class="fas fa-trash"></i>
+                                            <i class="fa fa-trash"></i>
                                         </span>
                                         <span>Verwijderen</span>
                                     </button>

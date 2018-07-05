@@ -1,0 +1,8 @@
+// Borderles/Shadowless simulate inline editing
+input[type="text"],
+textarea {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    box-shadow: none;
+}

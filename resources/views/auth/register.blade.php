@@ -18,11 +18,11 @@ Dan Weet de Ome-Henk website, wie jij bent
                         <p class="control has-icons-left has-icons-right">
                             <input id="name" type="text" class="input{{ $errors->has('name') ? ' is-danger' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
                             <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
+                                <i class="fa fa-user"></i>
                             </span>
                             @if ($errors->has('name'))
                             <span class="icon is-small is-right">
-                                <i class="fas fa-cross"></i>
+                                <i class="fa fa-cross"></i>
                             </span>
                             @endif
                         </p>
@@ -38,11 +38,11 @@ Dan Weet de Ome-Henk website, wie jij bent
                         <p class="control has-icons-left has-icons-right">
                             <input id="email" type="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" name="email" value="{{ old('email') }}" required>
                             <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fa fa-envelope"></i>
                             </span>
                             @if ($errors->has('email'))
                             <span class="icon is-small is-right">
-                                <i class="fas fa-cross"></i>
+                                <i class="fa fa-cross"></i>
                             </span>
                             @endif
                         </p>
@@ -58,11 +58,11 @@ Dan Weet de Ome-Henk website, wie jij bent
                         <p class="control has-icons-left has-icons-right">
                             <input id="password" type="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" name="password" required>
                             <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
+                                <i class="fa fa-lock"></i>
                             </span>
                             @if ($errors->has('password'))
                             <span class="icon is-small is-right">
-                                <i class="fas fa-cross"></i>
+                                <i class="fa fa-cross"></i>
                             </span>
                             @endif
                         </p>
@@ -78,7 +78,7 @@ Dan Weet de Ome-Henk website, wie jij bent
                         <p class="control has-icons-left">
                             <input id="password-confirm" type="password" class="input" name="password_confirmation" required>
                             <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
+                                <i class="fa fa-lock"></i>
                             </span>
                         </p>
                     </div>
@@ -87,7 +87,7 @@ Dan Weet de Ome-Henk website, wie jij bent
                         <p class="control">
                             <button type="submit" class="button is-primary">
                                 <span class="icon">
-                                    <i class="fas fa-user-plus"></i>
+                                    <i class="fa fa-user-plus"></i>
                                 </span>
                                 <span>{{ __('Inschrijven') }}</span>
                             </button>

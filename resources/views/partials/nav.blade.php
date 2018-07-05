@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar is-success">
                 <div class="container">
                     <!-- Hidden Checkbox hack trigger for Pure CSS toggle -->
                     <input type="checkbox" id="menu-toggle" class="is-hidden"/>
@@ -17,15 +17,15 @@
                         <div class="navbar-end">
                             @guest
                             <a href="{{ route('login') }}" class="navbar-item">
-                                <span class="icon">
-                                    <i class="fas fa-sign-in-alt"></i>
+                                <span class="icon is-medium">
+                                    <i class="fa fa-sign-in"></i>
                                 </span>
                                 <span>Aanmelden</span>
                             </a>
                             <span class="navbar-item">
                                 <a href="{{ route('register') }}" class="button is-success is-inverted">
-                                    <span class="icon">
-                                        <i class="fas fa-user-plus"></i>
+                                    <span class="icon is-medium">
+                                        <i class="fa fa-user-plus"></i>
                                     </span>
                                     <span>Inschrijven</span>
                                 </a>
@@ -33,16 +33,16 @@
                             @else
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">
-                                    <span class="icon">
-                                        <i class="fas fa-user-circle"></i>
+                                    <span class="icon is-medium">
+                                        <i class="fa fa-user-circle"></i>
                                     </span>
                                     <span>Welkom, {{ Auth::user()->name }}</span>
                                 </a>
 
                                 <div class="navbar-dropdown">
                                     <a class="navbar-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                        <span class="icon">
-                                            <i class="fas fa-sign-out-alt"></i>
+                                        <span class="icon is-medium">
+                                            <i class="fa fa-sign-out"></i>
                                         </span>
                                         <span>{{ __('Afmelden') }}</span>
                                     </a>

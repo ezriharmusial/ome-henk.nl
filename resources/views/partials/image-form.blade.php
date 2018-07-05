@@ -1,13 +1,13 @@
 <div class="field">
   <div class="file is-boxed">
     <label class="file-label">
-      <input class="file-input" type="file" name="featured_image">
+      <input class="file-input" type="file" name="filename">
       <span class="file-cta">
         <span class="file-icon">
-          <i class="fas fa-upload"></i>
+          <i class="fa fa-upload"></i>
         </span>
         <span class="file-label">
-          Artikel Foto Uploaden
+          Bestand Kiezen
         </span>
       </span>
     </label>

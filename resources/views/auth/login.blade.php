@@ -17,11 +17,11 @@ Dat Chat een stuk makkelijker
                         <p class="control has-icons-left has-icons-right">
                             <input id="email" type="email" class="input {{ $errors->has('email') ? ' is-error' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
                             <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fa fa-envelope"></i>
                             </span>
                             @if ($errors->has('email'))
                             <span class="icon is-small is-right">
-                                <i class="fas fa-cross"></i>
+                                <i class="fa fa-cross"></i>
                             </span>
                             @endif
                         </p>
@@ -37,7 +37,7 @@ Dat Chat een stuk makkelijker
                         <p class="control has-icons-left">
                             <input id="password" type="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" name="password" required>
                             <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
+                                <i class="fa fa-lock"></i>
                             </span>
                         </p>
                         @if ($errors->has('password'))
