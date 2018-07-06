@@ -12,6 +12,8 @@
 */
 // Gebruikerspaginas
 Auth::routes();
+
+Route::view('/privacy', 'static.privacy')->name('privacy-statement');
 // Plaatjes
 Route::get('/media','MediaController@create')->name('media.create');
 Route::post('/media','MediaController@store')->name('media.store');
@@ -21,13 +23,13 @@ Route::delete('/media/{id}/verwijderen','MediaController@destroy')->name('media.
 Route::get('/home', 'HomeController@index');
 
 // Paginas
+Route::get('/', 'PagesController@index')->name('pages.index');
 Route::post('/pagina', 'PagesController@store')->name('pages.store');
 Route::get('/pagina/aanmaken', 'PagesController@create')->name('pages.create');
-Route::get('/', 'PagesController@index')->name('index');
+Route::delete('/pagina/verwijderen/{page}/', 'PagesController@destroy')->name('pages.destroy');
 Route::get('/{page}', 'PagesController@show')->name('pages.show');
 Route::get('/{page}/bewerken', 'PagesController@edit')->name('pages.edit');
 Route::match(['put', 'patch'], '/{page}', 'PagesController@update')->name('pages.update');
-Route::delete('/{page}/verwijderen', 'PagesController@destroy')->name('pages.destroy');
 
 // Pagina Artikeltjes
 Route::post('/{page}/artikel', 'PostsController@store')->name('posts.store');
@@ -35,9 +37,8 @@ Route::get('/{page}/artikel/aanmaken', 'PostsController@create')->name('posts.cr
 Route::get('/{page}/{post}', 'PostsController@show')->name('posts.show');
 Route::get('/{page}/{post}/bewerken', 'PostsController@edit')->name('posts.edit');
 Route::match(['put', 'patch'], '/{page}/{post}', 'PostsController@update')->name('posts.update');
-Route::post('/{page}/{post}/verwijderen', 'PostsController@destroy')->name('posts.destroy');
+Route::delete('/artikel/verwijderen/{post}', 'PostsController@destroy')->name('posts.destroy');
 // Route::resource('posts', 'PostsController');
-
 
 // Artikel Commentaar
 Route::post('/{page}/{post}/reacties', 'CommentsController@store')->name('storeComment');

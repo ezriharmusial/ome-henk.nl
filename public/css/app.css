@@ -13772,11 +13772,12 @@ label.panel-block:hover {
   background: #ff3860;
 }
 
-.notification {
+.notification.is-fixed {
   position: fixed;
-  bottom: 50px;
+  bottom: 0px;
   right: 0;
-  margin: 0.5rem;
+  margin: 1rem;
+  z-index: 9999;
   -webkit-animation: cssAnimation 10s forwards;
           animation: cssAnimation 10s forwards;
   -webkit-animation-fill-mode: forwards;
@@ -13846,11 +13847,7 @@ label.panel-block:hover {
           transform: translateY(-5px) rotate(-45deg);
 }
 
-.hero.is-success .navbar-dropdown .navbar-item {
-  color: #23d160 !important;
-}
-
-.hero.is-success .navbar-dropdown .navbar-item:hover {
-  color: white !important;
+.hero .has-dropdown:hover .navbar-item:not(:hover) {
+  color: #7a7a7a !important;
 }
 

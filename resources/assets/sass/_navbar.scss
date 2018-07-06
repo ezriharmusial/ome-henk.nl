@@ -33,14 +33,10 @@
   }
 }
 
-.hero.is-success {
-    .navbar-dropdown {
-        .navbar-item {
-            color: hsl(141, 71%,  48%) !important;
-
-            &:hover {
-                color: white !important;
-            }
+.hero {
+    .has-dropdown:hover {
+        .navbar-item:not(:hover) {
+            color: hsl(0, 0%, 48%) !important;
         }
     }
 }

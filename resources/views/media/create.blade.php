@@ -15,11 +15,11 @@ Hier uploaden aub
     <div class="column is-multilinek">
         <form class="box" method="POST" action="{{ route('media.store') }}" enctype="multipart/form-data">
             @csrf
-            @include('partials.image-form')
+            @include('media.form')
 
             <div class="field">
                 <div class="control">
-                    <button type="submit" class="button is-success">
+                    <button  type="submit" class="button is-primary">
                         <span class="icon">
                             <i class="fa fa-plus"></i>
                         </span>
@@ -50,7 +50,7 @@ Hier uploaden aub
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">{{$medium->filename}}</p>
-      <button class="delete" aria-label="close"></button>
+      <button  class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
         <p class="image is-2by1">
@@ -62,7 +62,7 @@ Hier uploaden aub
             @csrf
             <input name="_method" type="hidden" value="DELETE">
             <p class="control">
-                <button class="button is-danger" type="submit">
+                <button  class="button is-outlined is-danger" type="submit">
                    <span class="icon">
                         <i class="fa fa-trash"></i>
                     </span>

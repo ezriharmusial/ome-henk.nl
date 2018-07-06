@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Media;
-use Carbon\Carbon;
 use Image;
 use Storage;
 use Illuminate\Support\Facades\File;

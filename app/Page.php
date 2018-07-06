@@ -13,6 +13,11 @@ class Page extends Model
         });
     }
 
+    public function media()
+    {
+        return $this->belongsTo(Media::class);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);

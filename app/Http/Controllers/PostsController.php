@@ -38,6 +38,7 @@ class PostsController extends Controller
 
     public function store(Page $page)
     {
+        // dd(request());
         $this->validate(request(), [
             'title' => 'required',
             'subtitle' => 'required',
@@ -45,12 +46,8 @@ class PostsController extends Controller
             'published' => 'required'
         ]);
 
-        if (request()->hasFile('featured_image'))
+        if (request()->hasFile('filename'))
         {
-            $image = request()->file('featured_image');
-            $featured_image_filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $featured_image_filename);
-            Image::make($image)->resize(1200, 675)->save($location);
         } else {
             $featured_image_filename = null;
         }
@@ -63,9 +60,63 @@ class PostsController extends Controller
             request('published')
         );
 
-        Session::flash('success', 'Artikel toegevoegd.');
 
-        return redirect(route('showPage' , $page->slug));
+        return redirect(route('pages.show' , $page->slug))->with('success', 'Artikel aangemaakt.');
+    }
+
+    public function edit(Post $post)
+    {
+        // dd($post);
+        return view('posts.edit')->with('post', $post);
+    }
+
+    public function update(Request $request, $slug)
+    {
+        $this->validate(request(), [
+            'title_icon' => 'required',
+            'title' => 'required',
+            'subtitle' => 'required',
+            'content' => 'required',
+        ]);
+
+        $page->addPost(
+            $featured_image_filename, // request('featured_image'),
+            request('title'),
+            request('subtitle'),
+            request('content'),
+            request('published')
+        );
+
+
+        return redirect(route('pages.show' , $page->slug))->with('success', 'Artikel aangemaakt.');
+
+        $post = Post::where('slug', $slug)->first();
+
+        // dd($request);
+
+        // Iconpicker hack
+        $title_icon = $request['title_icon'];
+        $title_icon = str_replace('iconpicker-icon-preview ', '', $title_icon);
+        $title_icon = str_replace('fa-icon ', '', $title_icon);
+
+        $post->title_icon = $title_icon;
+        $post->title = $request['title'];
+        $post->subtitle = $request['subtitle'];
+        $post->content = $request['content'];
+        $post->published = (empty($request['published'])) ? 0 : 1 ;
+        $post->has_articles = (empty($request['has_articles'])) ? 0 : 1 ;
+
+        $post->save();
+
+        return redirect()->route('posts.show', compact('post'))->with('success', 'Artikel aangepast.');
+
+    }
+    public function destroy($slug)
+    {
+        $post = Post::where('slug', $slug)->first();
+        $page = Page::where('id', $post->id);
+        $post->delete();
+        return redirect( route('pages.show', compact('page')) )->with('success', 'Artikel verwijderd.');
     }
 
 }

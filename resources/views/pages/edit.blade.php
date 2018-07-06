@@ -13,20 +13,20 @@ Pagina bewerken
 @section ('content')
 <div class="column">
     <article class="section">
-        <form method="POST" action="{{ route('pages.update', $page->slug) }}">
-            @csrf
-            <input name="_method" type="hidden" value="PATCH">
-            @include ('pages.form-inputs')
+        <form method="POST" action="{{ route('pages.update', $page->slug) }}" enctype="multipart/form-data">
+            {{ method_field('PATCH') }}
+            @include ('media.form')
+            @include ('pages.form')
 
             <div class="field is-grouped is-grouped-right">
                 <div class="control">
-                    <button type="submit" class="button is-success">
+                    <button  type="submit" class="button is-primary">
                         <span class="icon">
                             <i class="fa fa-save"></i>
                         </span>
                         <span>Pagina Opslaan</span>
                     </button>
-                    <a class="button is-info" href="{{ URL::previous() }}">Annuleren</a>
+                    <a class="button is-outlined is-warning" href="{{ URL::previous() }}">Annuleren</a>
                 </div>
             </div>
         </form>

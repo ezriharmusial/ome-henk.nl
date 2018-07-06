@@ -11,13 +11,13 @@ class PagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['show']);
+        $this->middleware('auth')->except(['show', 'index']);
     }
 
     public function index(Page $page)
     {
-        $page = Page::first();
-        return view('pages.index', compact('page') );
+        $page = (Page::first()) ? Page::first() : New Page;
+        return view('pages.show', compact('page') );
     }
 
     public function show(Page $page)
@@ -55,7 +55,7 @@ class PagesController extends Controller
             new Page(request(['title_icon', 'title', 'subtitle', 'content', 'has_articles']))
         );
 
-        return redirect('/');
+        return redirect( route('pages.show')->$page )->with('success', 'Pagina aangemaakt');
     }
 
     public function edit(Page $page)
@@ -91,18 +91,17 @@ class PagesController extends Controller
 
         $page->save();
 
-        Session::flash('success', 'Pagina opgeslagen');
-
-        return redirect()->route('pages.show', $page->slug);
+        return redirect()->route('pages.show', $page->slug)->with('success', 'Pagina aangepast.');
 
     }
 
     public function destroy($slug)
     {
-        dd($slug);
         $page = Page::where('slug', $slug)->first();
-        $pagetitle = $page->title;
-        $page->delete();
-        return redirect( route('index') )->with('success', 'Pagina <em>' . $pagetitle . '</em> is verwijderd.');
+        if (!$page->posts()){
+            $page->delete();
+            return redirect( route('pages.index') )->with('success', 'Pagina verwijderd.');
+        }
+        return back()->with('warning', 'Kan pagina niet verwijderen als het nog artikelen bevat.');
     }
 }

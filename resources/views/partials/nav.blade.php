@@ -1,10 +1,10 @@
-<nav class="navbar is-success">
+<nav class="navbar is-primary">
                 <div class="container">
                     <!-- Hidden Checkbox hack trigger for Pure CSS toggle -->
                     <input type="checkbox" id="menu-toggle" class="is-hidden"/>
                     <div class="navbar-brand">
                         <a href="/" class="navbar-item">
-                            <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                            <img src="/images/ome-henk.nl-wide-white.png" alt="Logo">
                         </a>
 
                         <label for="menu-toggle" class="nav-toggle navbar-burger">
@@ -23,7 +23,7 @@
                                 <span>Aanmelden</span>
                             </a>
                             <span class="navbar-item">
-                                <a href="{{ route('register') }}" class="button is-success is-inverted">
+                                <a href="{{ route('register') }}" class="button is-primary is-inverted">
                                     <span class="icon is-medium">
                                         <i class="fa fa-user-plus"></i>
                                     </span>

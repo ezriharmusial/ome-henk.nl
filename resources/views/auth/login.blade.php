@@ -1,7 +1,10 @@
 @extends('layouts.master')
 
 @section ('title')
-Bezoeker Aanmelden
+        <span class="icon is-medium">
+            <i class="fa fa-sign-in"></i>
+        </span>
+        <span>Bezoeker Aanmelden</span>
 @endsection
 @section ('subtitle')
 Dat Chat een stuk makkelijker
@@ -9,11 +12,16 @@ Dat Chat een stuk makkelijker
 
 @section('content')
             <div class="column">
-                <h2 class="title">Bezoeker Aanmelden</h2>
+                <h2 class="title">
+                    <span class="icon is-medium">
+                        <i class="fa fa-sign-in"></i>
+                    </span>
+                    <span>Bezoeker Aanmelden</span>
+                </h2>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="field">
-                        <label for="email">{{ __('E-Mail Address') }}</label>
+                        <label for="email">{{ __('E-Mail Adres') }}</label>
                         <p class="control has-icons-left has-icons-right">
                             <input id="email" type="email" class="input {{ $errors->has('email') ? ' is-error' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
                             <span class="icon is-small is-left">
@@ -33,7 +41,7 @@ Dat Chat een stuk makkelijker
                     </div>
 
                     <div class="field">
-                        <label for="password">{{ __('Password') }}</label>
+                        <label for="password">{{ __('Wachtwoord') }}</label>
                         <p class="control has-icons-left">
                             <input id="password" type="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" name="password" required>
                             <span class="icon is-small is-left">
@@ -50,20 +58,23 @@ Dat Chat een stuk makkelijker
                     <div class="field">
                         <p class="control">
                             <label class="checkbox">
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Onthoud mij in deze Browser') }}
                             </label>
                         </p>
                     </div>
 
                     <div class="field is-grouped">
                         <div class="control">
-                            <button type="submit" class="button is-link">
-                                {{ __('Login') }}
+                            <button  type="submit" class="button is-primary">
+                                <span class="icon is-medium">
+                                    <i class="fa fa-sign-in"></i>
+                                </span>
+                                <span>{{ __('Aanmelden') }}</span>
                             </button>
                         </div>
                         <div class="control">
-                            <a class="button is-text" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
+                            <a class="button is-outlined is-text" href="{{ route('password.request') }}">
+                                {{ __('Wachtwoord vergeten?') }}
                             </a>
                         </div>
                     </div>

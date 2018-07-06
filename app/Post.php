@@ -15,6 +15,11 @@ class Post extends Model
         });
     }
 
+    public function media()
+    {
+        return $this->morphMany(Media::class, 'mediable');
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);

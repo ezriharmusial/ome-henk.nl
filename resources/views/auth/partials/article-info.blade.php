@@ -1,23 +1,33 @@
 @auth
 @php
-if (Route::current()->getName() == 'pages.show' ){
-    $article = $page;
-} elseif (Route::current()->getName() == 'posts.show') {
+// dd(Request::route()->getName(), in_array(Request::route()->getName(), ['posts.show', 'posts.index']));
+if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
     $article = $post;
+    $articletype = "Posts";
+} else {
+    $article = $page;
+    $articletype = "Pages";
 }
 @endphp
-                    <div class="box content">
-                        <p class="title">Informatie</p>
+                    <div class="box notification is-light content">
+                        <p class="subtitle">Aanvullende Informatie</p>
                         <dl>
-                            <dt>Gemaakt op:</dt>
-                            <dd>{{ $article->created_at->toFormattedDateString() }}</dd>
+                            {{ $article->title }}
+                            @if( $articletype == "Pages" )
+                            <dt>Pagina bevat Artikelen:</dt>
+                            <dd>{{ ($article->has_articles) ? "Ja" : "Nee" }}</dd>
+                            @endif
+                            <dt>Status:</dt>
+                            <dd>{{ ($article->published) ? "Gepubliceerd" : "Concept" }}</dd>
+                            <dt>Aangemaakt op:</dt>
+                            <dd>{{ $article->created_at->diffForHumans() }}</dd>
                             <dt>Aangepast op:</dt>
-                            <dd>{{ $article->updated_at->toFormattedDateString() }}</dd>
+                            <dd>{{ $article->updated_at->diffForHumans() }}</dd>
                         </dl>
                         <div class="field is-grouped">
-                            @if (Route::current()->getName() == 'pages.edit' || Route::current()->getName() == 'posts.edit')
+                            @if ( ends_with( Route::current()->getName(), '.edit') )
                             <p class="control">
-                                <a href="{{ url()->full() }}/bewerken" class="button is-link">
+                                <a href="{{ url()->full() }}/bewerken" class="button is-outlined is-link">
                                    <span class="icon">
                                         <i class="fa fa-save"></i>
                                     </span>
@@ -25,11 +35,7 @@ if (Route::current()->getName() == 'pages.show' ){
                                 </a>
                             </p>
                             <p class="control">
-                                @if (Route::current()->getName() == 'pages.edit')
-                                <a href="{{ route('pages.show') }}" class="button is-link">
-                                @elseif (Route::current()->getName() == 'posts.edit')
-                                <a href="{{ route('posts.show') }}" class="button is-link">
-                                @endif
+                                <a href="{{ route( strtolower($articletype) .'.show') }}" class="button is-outlined is-link">
                                    <span class="icon">
                                         <i class="fa fa-edit"></i>
                                     </span>
@@ -38,22 +44,18 @@ if (Route::current()->getName() == 'pages.show' ){
                             </p>
                             @else
                             <p class="control">
-                                <a href="{{ url()->full() }}/bewerken" class="button is-link">
+                                <a href="{{ url()->full() }}/bewerken" class="button is-outlined is-link">
                                    <span class="icon">
                                         <i class="fa fa-edit"></i>
                                     </span>
                                     <span>Bewerken</span>
                                 </a>
                             </p>
-                            @if (Route::current()->getName() == 'pages.show')
-                            <form method="post" action="{{action('PagesController@destroy', $page->slug)}}" >
-                            @elseif (Route::current()->getName() == 'posts.show')
-                            <form method="post" action="{{action('PostsController@destroy', $post->slug)}}" >
-                            @endif
+                            <form method="post" action="{{action($articletype.'Controller@destroy', $article->slug)}}" >
                                 @csrf
-                                <input name="_method" type="hidden" value="DELETE">
+                                {{ method_field('DELETE') }}
                                 <p class="control">
-                                    <button class="button is-danger" type="submit">
+                                    <button  class="button is-outlined is-danger" type="submit">
                                        <span class="icon">
                                             <i class="fa fa-trash"></i>
                                         </span>

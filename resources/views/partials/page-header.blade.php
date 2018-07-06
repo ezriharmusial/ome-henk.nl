@@ -1,11 +1,11 @@
 @php
-if (Route::current()->getName() == 'pages.show' && $page->featured_image) {
-    $featured_image = $page->featured_image;
-} elseif (Route::current()->getName() == 'posts.show' && $post->featured_image) {
-    $featured_image = $post->featured_image;
+if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
+    $article = $post;
+} elseif (in_array(Request::route()->getName(), ['pages.show', 'pages.index'])) {
+    $article = $page;
 }
 @endphp
-<section class="hero is-success is-medium"@if (isset($featured_image)) style="background-image: url('/images/{{ $featured_image }}');background-size: cover;"@endif>
+<section class="hero is-primary is-bold" @if ( !empty($article) ) style="background-image: url('/images/{{ $article->featured_image }}');background-size: cover;"@endif>
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
             @include ('partials.nav')

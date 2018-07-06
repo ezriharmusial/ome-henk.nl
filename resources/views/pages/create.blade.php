@@ -13,20 +13,19 @@ Vul dan het onderstaande formulier in..
 @section ('content')
 <div class="column">
     <article class="section">
-        <form method="POST" action="{{ route('pages.store') }}">
-            @csrf
-
-            @include ('pages.form-inputs')
+        <form method="POST" action="{{ route('pages.store') }}" enctype="multipart/form-data">
+            @include ('media.form')
+            @include ('pages.form')
 
             <div class="field is-grouped is-grouped-right">
                 <div class="control">
-                    <button type="submit" class="button is-success">
+                    <button  type="submit" class="button is-primary">
                         <span class="icon">
                             <i class="fa fa-plus"></i>
                         </span>
                         <span>Pagina Aanmaken</span>
                     </button>
-                    <a class="button is-info" href="{{ URL::previous() }}">Annuleren</a>
+                    <a class="button is-outlined is-warning" href="{{ URL::previous() }}">Annuleren</a>
                 </div>
             </div>
         </form>
