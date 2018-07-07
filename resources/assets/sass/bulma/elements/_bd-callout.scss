@@ -1,0 +1,19 @@
+.bd-callout {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    padding: 1.25rem 2.5rem 0 1.5rem;
+    position: relative;
+
+    &.is-primary {
+        background-color: #00d1b2;
+
+        &,
+        a {
+            color: #fff;
+        }
+        a:hover {
+            background-color: rgba(10, 10, 10, 0.1);
+        }
+
+    }
+}
