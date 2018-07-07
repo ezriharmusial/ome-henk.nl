@@ -1,20 +1,24 @@
 @extends ('layouts.master')
 
 @section ('title')
-{{ $post->title }}
+                <span class="icon is-medium">
+                    <i class="{{ $page->title_icon }}"></i>
+                </span>
+                <span>{{ $page->title}}</span>
 @endsection
 @section ('subtitle')
-{{ $post->subtitle }}
+{{ $post->title }}
 @endsection
 
 @section ('content')
-                    <div class="column">
-                        @include('posts.article')
-                        @include('partials.comments')
-                    </div>
-@endsection
-
-@section ('sidebar-content')
-    @include ('auth.partials.article-info')
+            <div class="columns">
+                <div class="column">
+                    @include('posts.article')
+                    {{-- @include('partials.comments') --}}
+                </div>
+                <div class="column is-one-forth is-narrow">
+                    @include ('partials.article-info')
+                </div>
+            </div>
 @endsection
 

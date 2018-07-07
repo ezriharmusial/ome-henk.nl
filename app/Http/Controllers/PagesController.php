@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Page;
 use View;
 use Session;
+use App\User;
 
 class PagesController extends Controller
 {
@@ -17,7 +18,11 @@ class PagesController extends Controller
     public function index(Page $page)
     {
         $page = (Page::first()) ? Page::first() : New Page;
-        return view('pages.show', compact('page') );
+        if ( !is_null(User::first()) && !is_null($page->exists)) {
+            return redirect()->route('pages.show', compact('page'));
+        } else {
+            return view('register', compact('page'));
+        }
     }
 
     public function show(Page $page)
@@ -51,11 +56,13 @@ class PagesController extends Controller
         $request['published'] = (empty($request['published'])) ? 0 : 1 ;
         $request['has_articles'] = (empty($request['has_articles'])) ? 0 : 1 ;
 
+        $page = new Page(request(['title_icon', 'title', 'subtitle', 'content', 'has_articles', 'published']));
+
         auth()->user()->publishPage(
-            new Page(request(['title_icon', 'title', 'subtitle', 'content', 'has_articles']))
+            $page
         );
 
-        return redirect( route('pages.show')->$page )->with('success', 'Pagina aangemaakt');
+        return redirect( route('pages.show', compact('page')) )->with('success', 'Pagina aangemaakt');
     }
 
     public function edit(Page $page)
@@ -98,8 +105,12 @@ class PagesController extends Controller
     public function destroy($slug)
     {
         $page = Page::where('slug', $slug)->first();
-        if (!$page->posts()){
+        if (is_null( $page->posts()->first() )){
             $page->delete();
+
+            if (is_null( Page::first() ))
+                return redirect( route('home') )->with('success', 'Pagina verwijderd.');
+
             return redirect( route('pages.index') )->with('success', 'Pagina verwijderd.');
         }
         return back()->with('warning', 'Kan pagina niet verwijderen als het nog artikelen bevat.');

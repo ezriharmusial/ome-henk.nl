@@ -20,24 +20,28 @@ Route::post('/media','MediaController@store')->name('media.store');
 Route::delete('/media/{id}/verwijderen','MediaController@destroy')->name('media.destroy');
 
 // Dashboard?
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'PagesController@index');
 
 // Paginas
 Route::get('/', 'PagesController@index')->name('pages.index');
 Route::post('/pagina', 'PagesController@store')->name('pages.store');
 Route::get('/pagina/aanmaken', 'PagesController@create')->name('pages.create');
-Route::delete('/pagina/verwijderen/{page}/', 'PagesController@destroy')->name('pages.destroy');
-Route::get('/{page}', 'PagesController@show')->name('pages.show');
 Route::get('/{page}/bewerken', 'PagesController@edit')->name('pages.edit');
+Route::delete('/{page}/verwijderen/', 'PagesController@destroy')->name('pages.destroy');
+Route::get('/{page}', 'PagesController@show')->name('pages.show');
 Route::match(['put', 'patch'], '/{page}', 'PagesController@update')->name('pages.update');
 
 // Pagina Artikeltjes
 Route::post('/{page}/artikel', 'PostsController@store')->name('posts.store');
 Route::get('/{page}/artikel/aanmaken', 'PostsController@create')->name('posts.create');
-Route::get('/{page}/{post}', 'PostsController@show')->name('posts.show');
 Route::get('/{page}/{post}/bewerken', 'PostsController@edit')->name('posts.edit');
+// Route::get('/{page}/{post}/bewerken', function($pageslug, $postslug){
+//     dd($pageslug, $postslug);
+// })->name('posts.edit');
+Route::get('/{page}/{post}', 'PostsController@show')->name('posts.show');
 Route::match(['put', 'patch'], '/{page}/{post}', 'PostsController@update')->name('posts.update');
-Route::delete('/artikel/verwijderen/{post}', 'PostsController@destroy')->name('posts.destroy');
+Route::delete('/{page}/{post}/verwijderen', 'PostsController@destroy')->name('posts.destroy');
 // Route::resource('posts', 'PostsController');
 
 // Artikel Commentaar

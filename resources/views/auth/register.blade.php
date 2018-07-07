@@ -1,13 +1,17 @@
+@php
+if ( is_null(\App\User::first()))
+    $beheerder = 'Beheerder';
+@endphp
 @extends('layouts.master')
 
 @section ('title')
         <span class="icon is-medium">
             <i class="fa fa-user-plus"></i>
         </span>
-        <span>Bezoeker Inschrijven</span>
+        <span>{{ $beheerder or "Bezoeker" }} Inschrijven</span>
 @endsection
 @section ('subtitle')
-Dan Weet de Ome-Henk website, wie jij bent
+Dan weet Ome-Henk.nl, wie jij bent
 @endsection
 
 @section('content')
@@ -16,7 +20,7 @@ Dan Weet de Ome-Henk website, wie jij bent
                     <span class="icon is-medium">
                         <i class="fa fa-user-plus"></i>
                     </span>
-                    <span>Bezoeker Inschrijven</span>
+                    <span>{{ $beheerder or "Bezoeker" }} Inschrijven</span>
                 </h2>
                 <p>Vult u hier alstublieft uw persoonlijke gegevens in.</p>
                 <form method="POST" action="{{ route('register') }}">

@@ -8,10 +8,7 @@
 
     <section class="section">
         <div class="container">
-            <div class="columns">
-@yield('content')
-                @include('partials.sidebar')
-            </div>
+            @yield('content')
         </div>
     </section>
 

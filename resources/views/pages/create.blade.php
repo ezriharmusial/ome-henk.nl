@@ -4,17 +4,23 @@
         <span class="icon is-medium">
             <i class="fa fa-plus"></i>
         </span>
-        <span>Pagina aanmaken?</span>
+        <span>Nieuwe Pagina</span>
 @endsection
 @section ('subtitle')
-Vul dan het onderstaande formulier in..
+voor op Ome-Henk.nl
 @endsection
 
 @section ('content')
-<div class="column">
-    <article class="section">
-        <form method="POST" action="{{ route('pages.store') }}" enctype="multipart/form-data">
-            @include ('media.form')
+<form method="POST" action="{{ route('pages.store') }}" enctype="multipart/form-data">
+    <div class="columns">
+        <div class="column">
+            <h3 class="title">
+                <span class="icon is-medium">
+                    <i class="fa fa-plus"></i>
+                </span>
+                <span>Nieuwe Pagina</span>
+            </h3>
+            <h4 class="subtitle">voor op Ome-Henk.nl</h4>
             @include ('pages.form')
 
             <div class="field is-grouped is-grouped-right">
@@ -25,10 +31,16 @@ Vul dan het onderstaande formulier in..
                         </span>
                         <span>Pagina Aanmaken</span>
                     </button>
-                    <a class="button is-outlined is-warning" href="{{ URL::previous() }}">Annuleren</a>
+                    <a class="button is-outlined is-danger" href="{{ URL::previous() }}">Annuleren</a>
                 </div>
             </div>
-        </form>
-    </article>
-</div>
+        </div>
+        <div class="column is-one-forth is-narrow">
+            <label class="label">Header Achtergrond</label>
+            <div class="box">
+                @include ('media.form')
+            </div>
+        </div>
+    </div>
+</form>
 @endsection

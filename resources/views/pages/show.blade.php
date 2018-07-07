@@ -12,10 +12,11 @@
                 <span>{{ $page->title or 'Welkom op Ome-Henk.nl'}}</span>
 @endsection
 @section ('subtitle')
-                {{ $page->subtitle  or 'Uw eigen persoonlijke blog'}}
+                {{ $page->subtitle or 'Uw eigen persoonlijke blog'}}
 @endsection
 
 @section ('content')
+            <div class="columns">
                 <div class="column">
                     <article>
                         <h2 class="title">
@@ -33,7 +34,7 @@
                                     <span>Inschrijven</span>
                                 </a> rechts bovenin het scherm. "!!}
                         </div>
-                    </articls>
+                    </article>
                     <section>
                         @if ($page->has_articles)
                         @auth
@@ -47,7 +48,7 @@
                     </section>
                     <section class="section">
                         @foreach ($page->posts as $post)
-                        <a href="/{{ $page->slug }}/{{ $post->slug }}" title="{{ $post->title }}"class="columns">
+                        <a href="{{ route('posts.show', [$page->slug, $post->slug]) }}" title="{{ $post->title }}" class="columns">
                             {{-- Display Featured Article Image if it is there --}}
                             @if ( isset($post->featured_image) )
                             <div class="column is-4">
@@ -62,10 +63,10 @@
                         @endif
                     </section>
                 </div>
-@endsection
-
-@section ('sidebar-content')
-    @include ('auth.partials.article-info')
+                <div class="column  is-one-forth is-narrow">
+                    @include ('partials.article-info')
+                </div>
+            </div>
 @endsection
 
 

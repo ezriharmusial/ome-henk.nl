@@ -31,9 +31,10 @@ class PostsController extends Controller
         return view('posts.show', compact('page', 'post'));
     }
 
-    public function create(Page $page)
+    public function create(Page $page, Post $post)
     {
-        return view('posts.create', compact('page'));
+        $post = new Post;
+        return view('posts.create', compact('page', 'post'));
     }
 
     public function store(Page $page)
@@ -46,14 +47,7 @@ class PostsController extends Controller
             'published' => 'required'
         ]);
 
-        if (request()->hasFile('filename'))
-        {
-        } else {
-            $featured_image_filename = null;
-        }
-
         $page->addPost(
-            $featured_image_filename, // request('featured_image'),
             request('title'),
             request('subtitle'),
             request('content'),
@@ -64,59 +58,45 @@ class PostsController extends Controller
         return redirect(route('pages.show' , $page->slug))->with('success', 'Artikel aangemaakt.');
     }
 
-    public function edit(Post $post)
+    public function edit($pageSlug, $postSlug)
     {
-        // dd($post);
-        return view('posts.edit')->with('post', $post);
+        $page = Page::where('slug', $pageSlug)->first();
+        $post = Post::where('slug', $postSlug)->first();
+
+        return view('posts.edit', compact('page', 'post') );
     }
 
-    public function update(Request $request, $slug)
+    public function update($pageSlug, $postSlug)
     {
+
         $this->validate(request(), [
-            'title_icon' => 'required',
             'title' => 'required',
             'subtitle' => 'required',
             'content' => 'required',
         ]);
 
-        $page->addPost(
-            $featured_image_filename, // request('featured_image'),
-            request('title'),
-            request('subtitle'),
-            request('content'),
-            request('published')
-        );
-
-
-        return redirect(route('pages.show' , $page->slug))->with('success', 'Artikel aangemaakt.');
-
-        $post = Post::where('slug', $slug)->first();
+        $post = Post::where('slug', $postSlug)->first();
+        // dd($post, $postSlug, request());
 
         // dd($request);
 
-        // Iconpicker hack
-        $title_icon = $request['title_icon'];
-        $title_icon = str_replace('iconpicker-icon-preview ', '', $title_icon);
-        $title_icon = str_replace('fa-icon ', '', $title_icon);
-
-        $post->title_icon = $title_icon;
-        $post->title = $request['title'];
-        $post->subtitle = $request['subtitle'];
-        $post->content = $request['content'];
-        $post->published = (empty($request['published'])) ? 0 : 1 ;
-        $post->has_articles = (empty($request['has_articles'])) ? 0 : 1 ;
+        $post->title = request('title');
+        $post->subtitle = request('subtitle');
+        $post->content = request('content');
+        $post->published = (empty(request('published'))) ? 0 : 1 ;
 
         $post->save();
 
-        return redirect()->route('posts.show', compact('post'))->with('success', 'Artikel aangepast.');
+        return redirect()->route('posts.show', compact('pageSlug', 'postSlug'))->with('success', 'Artikel aangepast.');
 
     }
-    public function destroy($slug)
+    public function destroy($pageSlug, $postSlug)
     {
-        $post = Post::where('slug', $slug)->first();
-        $page = Page::where('id', $post->id);
+
+        $post = Post::where('slug', $postSlug)->first();
+        $page = Page::where('slug', $pageSlug)->first();
         $post->delete();
-        return redirect( route('pages.show', compact('page')) )->with('success', 'Artikel verwijderd.');
+        return redirect()->route('pages.show', compact('page'))->with('success', 'Artikel verwijderd.');
     }
 
 }

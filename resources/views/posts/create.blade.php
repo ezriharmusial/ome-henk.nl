@@ -9,32 +9,46 @@
         <span class="icon">
             <i class="fa fa-plus"></i>
         </span>
-        <span>Artikel Aanmaken</span>
+        <span>Nieuw Artikel</span>
 @endsection
 
 @section ('subtitle')
-Schrijf een nieuw artikel voor
+voor op de "{{ $page->title}}" pagina
 @endsection
 
 @section ('content')
-<div class="column">
-    <h2 class="title">
-        <span class="icon">
-            <i class="fa fa-plus"></i>
+<form method="POST" action="{{ route('posts.store', $page) }}" enctype="multipart/form-data">
+    <div class="columns">
+        <div class="column">
+            <h3 class="title">
+                <span class="icon">
+                    <i class="fa fa-plus"></i>
         </span>
-        <span>Artikel Aanmaken</span>
-    </h2>
-    <p>Vul de onderstaande gegevens in om een nieuwe Artikel aan te maken.</p>
-    <form method="POST" action="{{ route('posts.store', $page) }}" enctype="multipart/form-data">
-        @include ('posts.form')
-        <div class="field is-grouped">
-          <div class="control">
-            <button  type="submit" class="button is-outlined is-link">Publiceren</button>
-          </div>
-        </div>
-    </form>
-</div>
-@endsection
+        <span>Nieuw Artikel</span>
+            </h3>
+            <h4 class="subtitle">
+                <span>voor op de "{{ $page->title}}" pagina</span>
+            </h4>
+            @include ('posts.form')
 
-@section ('footer')
+            <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                    <button  type="submit" class="button is-primary">
+                        <span class="icon">
+                            <i class="fa fa-plus"></i>
+                        </span>
+                        <span>Artikel Aanmaken</span>
+                    </button>
+                    <a class="button is-outlined is-danger" href="{{ URL::previous() }}">Annuleren</a>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-forth is-narrow">
+            <label class="label">Plaatjes</label>
+            <div class="box">
+                @include ('media.form')
+            </div>
+        </div>
+    </div>
+</form>
 @endsection
