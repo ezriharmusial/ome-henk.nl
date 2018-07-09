@@ -15,9 +15,9 @@ Auth::routes();
 
 Route::view('/privacy', 'static.privacy')->name('privacy-statement');
 // Plaatjes
-Route::get('/media','MediaController@create')->name('media.create');
-Route::post('/media','MediaController@store')->name('media.store');
-Route::delete('/media/{id}/verwijderen','MediaController@destroy')->name('media.destroy');
+Route::get('/attachments','AttachmentsController@create')->name('attachments.create');
+Route::post('/attachments','AttachmentsController@store')->name('attachments.store');
+Route::delete('/attachments/{id}/verwijderen','AttachmentsController@destroy')->name('attachments.destroy');
 
 // Dashboard?
 Route::get('/home', 'HomeController@index')->name('home');
@@ -47,3 +47,7 @@ Route::delete('/{page}/{post}/verwijderen', 'PostsController@destroy')->name('po
 // Artikel Commentaar
 Route::post('/{page}/{post}/reacties', 'CommentsController@store')->name('storeComment');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

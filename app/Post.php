@@ -15,9 +15,9 @@ class Post extends Model
         });
     }
 
-    public function media()
+    public function attachments()
     {
-        return $this->morphMany(Media::class, 'mediable');
+        return $this->morphToMany('App\Attachment', 'attachable');
     }
 
     public function comments()

@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Media;
+use App\Attachment;
 use Image;
 use Storage;
 use Illuminate\Support\Facades\File;
 
-class MediaController extends Controller
+class AttachmentsController extends Controller
 {
     public function __construct()
     {
@@ -33,8 +33,8 @@ class MediaController extends Controller
      */
     public function create()
     {
-        $media = Media::all();
-        return view('media.create', compact('media'));
+        $attachments = Attachments::all();
+        return view('attachments.create', compact('attachments'));
     }
 
     /**
@@ -84,7 +84,7 @@ class MediaController extends Controller
                 })->encode('jpg', 75)
             );
 
-        $imagemodel = new Media();
+        $imagemodel = new Attachments();
         $imagemodel->filename = $hash;
         $imagemodel->save();
 
@@ -137,14 +137,14 @@ class MediaController extends Controller
         $optimizedPath = '/images/optimized/';
         $thumbnailPath = '/images/thumbnails/';
 
-        $media = Media::where('id', $id)->first();
-        $filename = $media->filename;
+        $attachments = Attachments::where('id', $id)->first();
+        $filename = $attachments->filename;
         Storage::delete([
                     $originalPath . $filename,
                     $optimizedPath . $filename,
                     $thumbnailPath . $filename,
                 ]);
-        $media->delete();
-        return redirect( route('media.create') )->with('success', 'De afbeelding is verwijderd.');
+        $attachments->delete();
+        return redirect( route('attachments.create') )->with('success', 'De afbeelding is verwijderd.');
     }
 }

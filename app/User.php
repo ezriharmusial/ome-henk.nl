@@ -27,9 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function images()
+    public function attachments()
     {
-        return $this->belongsTo(Images::class);
+        return $this->morphToMany('App\Attachment', 'attachable');
     }
 
     public function posts()
@@ -51,7 +51,6 @@ class User extends Authenticatable
     {
         $this->pages()->save($page);
     }
-
 
     public function comments()
     {

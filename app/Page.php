@@ -13,9 +13,9 @@ class Page extends Model
         });
     }
 
-    public function media()
+    public function attachments()
     {
-        return $this->belongsTo(Media::class);
+        return $this->morphToMany('App\Attachment', 'attachable');
     }
 
     public function posts()

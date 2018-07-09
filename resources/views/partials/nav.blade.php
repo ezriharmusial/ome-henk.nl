@@ -22,14 +22,16 @@
                                 </span>
                                 <span>Aanmelden</span>
                             </a>
+                            @if(is_null(\App\User::first()))
                             <span class="navbar-item">
                                 <a href="{{ route('register') }}" class="button is-primary is-inverted">
                                     <span class="icon is-medium">
                                         <i class="fa fa-user-plus"></i>
                                     </span>
-                                    <span>Inschrijven</span>
+                                    <span>Beheerder Registreren</span>
                                 </a>
                             </span>
+                            @endif
                             @else
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">

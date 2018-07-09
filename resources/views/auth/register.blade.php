@@ -8,7 +8,7 @@ if ( is_null(\App\User::first()))
         <span class="icon is-medium">
             <i class="fa fa-user-plus"></i>
         </span>
-        <span>{{ $beheerder or "Bezoeker" }} Inschrijven</span>
+        <span>{{ $beheerder or "Bezoeker" }} Registreren</span>
 @endsection
 @section ('subtitle')
 Dan weet Ome-Henk.nl, wie jij bent
@@ -20,9 +20,18 @@ Dan weet Ome-Henk.nl, wie jij bent
                     <span class="icon is-medium">
                         <i class="fa fa-user-plus"></i>
                     </span>
-                    <span>{{ $beheerder or "Bezoeker" }} Inschrijven</span>
+                    <span>{{ $beheerder or "Bezoeker" }} Registreren</span>
                 </h2>
-                <p>Vult u hier alstublieft uw persoonlijke gegevens in.</p>
+                @if ( !is_null($beheerder) )
+                <p>Om de site te kunnen gebruiken moet er eerst een beheerder (of meerdere beerders) worden aangesteld. De beheerder heeft rechten die een gewone bezoeker niet heeft namelijk:
+                    <ul>
+                        <li>Pagina's beheren,</li>
+                        <li>Artikelen beheren,</li>
+                        <li>Foto's beheren,</li>
+                        <li>en Commentaar modereren.</li>
+                    </ul>
+                @endif
+                <p>Vult u hier eerst uw persoonlijke gegevens in. Zodat de website weet wie u bent.</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
@@ -102,12 +111,12 @@ Dan weet Ome-Henk.nl, wie jij bent
                                 <span class="icon">
                                     <i class="fa fa-user-plus"></i>
                                 </span>
-                                <span>{{ __('Inschrijven') }}</span>
+                                <span>{{ __('Registreren') }}</span>
                             </button>
                         </div>
                         <div class="control">
                             <a class="button is-outlined is-text" href="{{ route('privacy-statement') }}" title="Weten hoe wij met uw gegevens omgaan?">
-                                {{ __('Ons privacybeleid') }}
+                                {{ __('Lees ons Privacybeleid') }}
                             </a>
                         </div>
                     </div>

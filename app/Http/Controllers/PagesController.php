@@ -18,10 +18,13 @@ class PagesController extends Controller
     public function index(Page $page)
     {
         $page = (Page::first()) ? Page::first() : New Page;
-        if ( !is_null(User::first()) && !is_null($page->exists)) {
-            return redirect()->route('pages.show', compact('page'));
+
+        if ( is_null(User::first())) {
+            return redirect()->route('register', compact('page'));
+        } elseif ( auth()->check() && !$page->exist ) {
+            return redirect()->route('pages.create', compact('page'))->with('warning', 'Maak uw eerste Pagina aan.');
         } else {
-            return view('register', compact('page'));
+            return view('pages.show', compact('page'));
         }
     }
 

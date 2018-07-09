@@ -1,4 +1,5 @@
 @auth
+@if ( !is_null( \App\Page::first() ) )
 @php
 // dd(Request::route()->getName(), in_array(Request::route()->getName(), ['posts.show', 'posts.index']));
 if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
@@ -45,4 +46,5 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                             </form>
                         </div>
                     </div>
+@endif
 @endauth

@@ -1,38 +1,40 @@
 @extends ('layouts.master')
 @section ('window-title')
-{{ '| '. $page->title or 'Welkom op Ome-Henk.nl' }}
+| {{ $page->title or 'Welkom op Ome-Henk.nl' }}
 @endsection
 @section ('title')
-{{--                 <figure class="is-image is-square">
-                    <img src="images\logo.svg" alt="" style="width: 25vw;">
-                </figure> --}}
+                @if( $page->exists() )
                 <span class="icon is-medium">
                     <i class="{{ $page->title_icon or "fa fa-handshake-o"}}"></i>
                 </span>
+                @else
+                <figure class="is-square">
+                    <img src="images\logo-primary.png" alt="" style="width: 25vw;">
+                </figure>
+                @endif
                 <span>{{ $page->title or 'Welkom op Ome-Henk.nl'}}</span>
 @endsection
 @section ('subtitle')
-                {{ $page->subtitle or 'Uw eigen persoonlijke blog'}}
+                {{ $page->subtitle or "Ome Henk's persoonlijke Blog" }}
 @endsection
 
 @section ('content')
             <div class="columns">
                 <div class="column">
                     <article>
-                        <h2 class="title">
+                        <h3 class="title">
                             <span class="icon">
-                                <i class="{{ $page->title_icon or "fa fa-info" }}"></i>
+                                <i class="{{ $page->title_icon or "fa fa-wrench" }}"></i>
                             </span>
-                            <span>{{ $page->title or "Hoe te beginnen?" }}</span>
-                        </h2>
-                        <h3 class="subtitle has-text-weight-light"><span>{{ $page->subtitle or "Direct aan de slag"}}</span></h3>
+                            <span>{{ $page->title or "Wij zijn druk bezig" }}</span>
+                        </h3>
+                        <h4 class="subtitle has-text-weight-light"><span>{{ $page->subtitle or "Om ome-henk.nl voor u gereed te maken" }}</span></h4>
                         <div class="content">
-                            {!! $page->content or "Stap 1: Druk op de Knop <a href=\"register\" class=\"button is-primary is-inverted\">
-                                    <span class=\"icon is-medium\">
-                                        <i class=\"fa fa-user-plus\"></i>
-                                    </span>
-                                    <span>Inschrijven</span>
-                                </a> rechts bovenin het scherm. "!!}
+                            @if ( $page->exists() )
+                            {!! $page->content !!}
+                            @else
+                                <p>Achter de schermen gebeurt er van alles. Komt u binnenkort weer terug een kijkje nemen?</p>
+                            @endif
                         </div>
                     </article>
                     <section>
