@@ -14,13 +14,11 @@
 Auth::routes();
 
 Route::view('/privacy', 'static.privacy')->name('privacy-statement');
-// Plaatjes
-Route::get('/attachments','AttachmentsController@create')->name('attachments.create');
-Route::post('/attachments','AttachmentsController@store')->name('attachments.store');
-Route::delete('/attachments/{id}/verwijderen','AttachmentsController@destroy')->name('attachments.destroy');
 
 // Dashboard?
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Auth\HomeController@index')->name('home');
+Route::get('/profiel', 'Auth\ProfileController@edit')->name('profile');
+Route::match(['put', 'patch'], '/profiel', 'Auth\ProfileController@update')->name('profile.update');
 // Route::get('/home', 'PagesController@index');
 
 // Paginas

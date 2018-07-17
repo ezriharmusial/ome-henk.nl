@@ -2,10 +2,15 @@
 
 namespace App;
 
-use Carbon\Carbon;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\File;
 
-class Post extends Model
+class Post extends Model implements HasMedia
 {
+    use HasMediaTrait;
+
     public static function boot()
     {
         parent::boot();
@@ -15,9 +20,21 @@ class Post extends Model
         });
     }
 
-    public function attachments()
+    public function registerMediaCollections()
     {
-        return $this->morphToMany('App\Attachment', 'attachable');
+        $this
+            ->addMediaCollection('featured-images')
+            ->acceptsFile(function (File $file) {
+                return $file->mimeType === 'image/jpeg';
+            })->singleFile();
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('full')
+              ->width(800)
+              ->height(600)
+              ->withResponsiveImages();
     }
 
     public function comments()
@@ -48,7 +65,7 @@ class Post extends Model
         if (! empty($filters))
         {
             if ($month = $filters['month']) {
-                $query->whereMonth('created_at', Carbon::parse($month)->month);
+                $query->whereMonth('created_at', carbon()->parse($month)->month);
             }
 
             if ($year = $filters['year']) {

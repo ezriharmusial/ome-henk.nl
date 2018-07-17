@@ -2,6 +2,11 @@
 @section ('window-title')
 | {{ $page->title or 'Welkom op Ome-Henk.nl' }}
 @endsection
+@section ('page-header-style')
+@if ($avatarUrl = $page->getFirstMediaUrl('page-headers', 'full'))
+style="background-image: url('{{ $avatarUrl }}');background-size: cover;"
+@endif
+@endsection
 @section ('title')
                 @if( $page->exists() )
                 <span class="icon is-medium">
@@ -22,13 +27,13 @@
             <div class="columns">
                 <div class="column">
                     <article>
-                        <h3 class="title">
+{{--                         <h3 class="title">
                             <span class="icon">
                                 <i class="{{ $page->title_icon or "fa fa-wrench" }}"></i>
                             </span>
                             <span>{{ $page->title or "Wij zijn druk bezig" }}</span>
                         </h3>
-                        <h4 class="subtitle has-text-weight-light"><span>{{ $page->subtitle or "Om ome-henk.nl voor u gereed te maken" }}</span></h4>
+                        <h4 class="subtitle has-text-weight-light"><span>{{ $page->subtitle or "Om ome-henk.nl voor u gereed te maken" }}</span></h4> --}}
                         <div class="content">
                             @if ( $page->exists() )
                             {!! $page->content !!}
@@ -37,7 +42,8 @@
                             @endif
                         </div>
                     </article>
-                    <section>
+                    <hr>
+                    <section class="section">
                         @if ($page->has_articles)
                         @auth
                         <a href="{{ route('posts.create', $page->slug) }}" class="button is-outlined is-primary is-fullwidth">

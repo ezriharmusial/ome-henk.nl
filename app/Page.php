@@ -2,8 +2,15 @@
 
 namespace App;
 
-class Page extends Model
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\File;
+
+class Page extends Model implements HasMedia
 {
+    use HasMediaTrait;
+
     public static function boot()
     {
         parent::boot();
@@ -13,9 +20,21 @@ class Page extends Model
         });
     }
 
-    public function attachments()
+    public function registerMediaCollections()
     {
-        return $this->morphToMany('App\Attachment', 'attachable');
+        $this
+            ->addMediaCollection('page-headers')
+            ->acceptsFile(function (File $file) {
+                return $file->mimeType === 'image/jpeg';
+            })->singleFile();
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('full')
+              ->width(1280)
+              ->height(640)
+              ->withResponsiveImages();
     }
 
     public function posts()

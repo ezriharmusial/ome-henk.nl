@@ -6,10 +6,16 @@
                 </span>
                 <span>{{ $page->title}}</span>
 @endsection
+
+@section ('page-header-style')
+@if ($avatarUrl = $page->getFirstMediaUrl('page-headers', 'full'))
+style="background-image: url('{{ $avatarUrl }}');background-size: cover;"
+@endif
+@endsection
+
 @section ('subtitle')
 {{ $post->title }}
 @endsection
-
 @section ('content')
             <div class="columns">
                 <div class="column">

@@ -37,15 +37,16 @@ class PostsController extends Controller
         return view('posts.create', compact('page', 'post'));
     }
 
-    public function store(Page $page)
+    public function store(Request $request, Page $page)
     {
-        // dd(request());
+
         $this->validate(request(), [
             'title' => 'required',
             'subtitle' => 'required',
             'content' => 'required',
             'published' => 'required'
         ]);
+
 
         $page->addPost(
             request('title'),
@@ -54,6 +55,9 @@ class PostsController extends Controller
             request('published')
         );
 
+        if($request->hasFile('featured-image')){
+            $post->addMediaFromRequest('featured-image')->toMediaCollection('featured-images');
+        }
 
         return redirect(route('pages.show' , $page->slug))->with('success', 'Artikel aangemaakt.');
     }
@@ -76,9 +80,6 @@ class PostsController extends Controller
         ]);
 
         $post = Post::where('slug', $postSlug)->first();
-        // dd($post, $postSlug, request());
-
-        // dd($request);
 
         $post->title = request('title');
         $post->subtitle = request('subtitle');
@@ -87,12 +88,15 @@ class PostsController extends Controller
 
         $post->save();
 
+        if(request()->hasFile('featured-image')){
+            $post->addMediaFromRequest('featured-image')->toMediaCollection('featured-images');
+        }
+
         return redirect()->route('posts.show', compact('pageSlug', 'postSlug'))->with('success', 'Artikel aangepast.');
 
     }
     public function destroy($pageSlug, $postSlug)
     {
-
         $post = Post::where('slug', $postSlug)->first();
         $page = Page::where('slug', $pageSlug)->first();
         $post->delete();

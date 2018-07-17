@@ -23,7 +23,7 @@ Dan weet Ome-Henk.nl, wie jij bent
                     <span>{{ $beheerder or "Bezoeker" }} Registreren</span>
                 </h2>
                 @if ( !is_null($beheerder) )
-                <p>Om de site te kunnen gebruiken moet er eerst een beheerder (of meerdere beerders) worden aangesteld. De beheerder heeft rechten die een gewone bezoeker niet heeft namelijk:
+                <p>Om de site te kunnen gebruiken moet er eerst een beheerder worden aangesteld. De beheerder kan:
                     <ul>
                         <li>Pagina's beheren,</li>
                         <li>Artikelen beheren,</li>

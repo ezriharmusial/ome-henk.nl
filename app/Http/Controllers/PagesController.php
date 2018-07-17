@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Page;
-use View;
-use Session;
 use App\User;
+use Session;
+use View;
 
 class PagesController extends Controller
 {
@@ -17,14 +17,14 @@ class PagesController extends Controller
 
     public function index(Page $page)
     {
-        $page = (Page::first()) ? Page::first() : New Page;
+        $page = (Page::first()->exists) ? Page::first() : New Page;
 
         if ( is_null(User::first())) {
             return redirect()->route('register', compact('page'));
-        } elseif ( auth()->check() && !$page->exist ) {
-            return redirect()->route('pages.create', compact('page'))->with('warning', 'Maak uw eerste Pagina aan.');
+        } elseif ( $page->exists ) {
+            return route('pages.show', compact('page'));
         } else {
-            return view('pages.show', compact('page'));
+            return redirect()->route('pages.create', compact('page'))->with('warning', 'Maak uw eerste Pagina aan.');
         }
     }
 
@@ -49,8 +49,6 @@ class PagesController extends Controller
             'content' => 'required',
         ]);
 
-        // dd($request);
-
         $title_icon = $request['title_icon'];
         $title_icon = str_replace('iconpicker-icon-preview ', '', $title_icon);
         $title_icon = str_replace('fa-icon ', '', $title_icon);
@@ -61,16 +59,19 @@ class PagesController extends Controller
 
         $page = new Page(request(['title_icon', 'title', 'subtitle', 'content', 'has_articles', 'published']));
 
+        if($request->hasFile('page-header')){
+            $page->addMediaFromRequest('page-header')->toMediaCollection('page-headers');
+        }
+
         auth()->user()->publishPage(
             $page
         );
 
-        return redirect( route('pages.show', compact('page')) )->with('success', 'Pagina aangemaakt');
+        return route('pages.show', compact('page'))->with('success', 'Pagina aangemaakt');
     }
 
     public function edit(Page $page)
     {
-        // dd($page);
         return view('pages.edit')->with('page', $page);
     }
 
@@ -85,8 +86,6 @@ class PagesController extends Controller
 
         $page = Page::where('slug', $slug)->first();
 
-        // dd($request);
-
         // Iconpicker hack
         $title_icon = $request['title_icon'];
         $title_icon = str_replace('iconpicker-icon-preview ', '', $title_icon);
@@ -98,6 +97,10 @@ class PagesController extends Controller
         $page->content = $request['content'];
         $page->published = (empty($request['published'])) ? 0 : 1 ;
         $page->has_articles = (empty($request['has_articles'])) ? 0 : 1 ;
+
+        if($request->hasFile('page-header')){
+            $page->addMediaFromRequest('page-header')->toMediaCollection('page-headers');
+        }
 
         $page->save();
 

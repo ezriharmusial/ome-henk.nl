@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 @include('partials.head')
-<body>
+<body class="has-navbar-fixed-top">
     @include('partials.page-header')
 
     @include('partials.notification')

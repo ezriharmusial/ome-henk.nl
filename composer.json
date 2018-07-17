@@ -10,7 +10,8 @@
         "intervention/image": "^2.4",
         "intervention/imagecache": "^2.3",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "spatie/laravel-medialibrary": "^7.3"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

@@ -25,11 +25,11 @@
             @csrf
             <label class="label">Icoon en Korte Titel</label>
             <div class="field has-addons">
-                <p class="control button is-light is-rounded is-size-5 is-large">
+                <p class="control button is-light is-size-4">
                     <input class="input" type="text" id="title_icon" name="title_icon" data-action="iconPicker" value="{{ $page->title_icon or "fa fa-question"}}" />
                 </p>
                 <p class="control is-expanded">
-                    <input class="input is-size-4 has-text-weight-semibold" id="title" name="title" type="text" placeholder="Titel van Pagina" value="{{ $page->title }}" required>
+                    <input class="input is-size-4 has-text-weight-semibold" id="title" name="title" type="text" placeholder="Icoon & Titel van Pagina" value="{{ $page->title }}" required>
                 </p>
             </div>
             @if ($errors->has('title_icon'))

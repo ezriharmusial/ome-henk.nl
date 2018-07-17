@@ -2,12 +2,20 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
+
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\File;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use Notifiable;
+    use HasMediaTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -27,9 +35,24 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function attachments()
+    public function registerMediaCollections()
     {
-        return $this->morphToMany('App\Attachment', 'attachable');
+        $this
+            ->addMediaCollection('avatar')
+            ->acceptsFile(function (File $file) {
+                return $file->mimeType === 'image/jpeg';
+            })->singleFile();
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('mini')
+              ->width(48)
+              ->height(48);
+
+        $this->addMediaConversion('thumb')
+              ->width(256)
+              ->height(256);
     }
 
     public function posts()

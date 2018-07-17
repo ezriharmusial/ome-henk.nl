@@ -1,4 +1,4 @@
-<nav class="navbar is-primary">
+<nav class="navbar is-primary is-fixed-top">
                 <div class="container">
                     <!-- Hidden Checkbox hack trigger for Pure CSS toggle -->
                     <input type="checkbox" id="menu-toggle" class="is-hidden"/>
@@ -33,15 +33,24 @@
                             </span>
                             @endif
                             @else
-                            <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link">
+                            <div class="navbar-item has-dropdown is-right is-hoverable">
+                                <div class="navbar-link">
                                     <span class="icon is-medium">
-                                        <i class="fa fa-user-circle"></i>
+                                        <figure class="image is-24x24">
+                                            <img src="{{ ($avatarUrl = Auth::user()->getFirstMediaUrl('avatar', 'mini')) ? $avatarUrl : "http://via.placeholder.com/28/00d1b2/ffffff"}}">
+                                        </figure>
                                     </span>
                                     <span>Welkom, {{ Auth::user()->name }}</span>
-                                </a>
+                                </div>
 
                                 <div class="navbar-dropdown">
+                                    <a class="navbar-item" href="{{ route('profile') }}">
+                                        <span class="icon is-medium">
+                                            <i class="fa fa-user-circle"></i>
+                                        </span>
+                                        <span>Profiel</span>
+                                    </a>
+                                    <hr class="navbar-divider">
                                     <a class="navbar-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         <span class="icon is-medium">
                                             <i class="fa fa-sign-out"></i>

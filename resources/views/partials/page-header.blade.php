@@ -1,4 +1,4 @@
-@php
+{{-- @php
 if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
     $article = $post;
 } elseif (in_array(Request::route()->getName(), ['pages.show', 'pages.index'])) {
@@ -7,7 +7,8 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
     $article = new \App\Page;
 }
 @endphp
-<section class="hero is-primary is-bold">{{-- @if ( $article->exists() ) style="background-image: url('/images/{{ $article->featured_image }}');background-size: cover;"@endif --}}
+ --}}
+ <section class="hero is-primary is-bold" @yield('page-header-style')>
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
             @include ('partials.nav')
