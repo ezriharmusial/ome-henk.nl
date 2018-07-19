@@ -19,12 +19,12 @@ class PagesController extends Controller
     {
         $page = (is_null(Page::first())) ? New Page : Page::first();
 
-        if ( is_null(User::first())) {
-            return redirect()->route('register', compact('page'));
-        } elseif ( $page->exists ) {
+        if ( $page->exists ) {
             return route('pages.show', compact('page'));
-        } else {
+        } elseif ( $page->exists == false && auth() ) {
             return redirect()->route('pages.create', compact('page'))->with('warning', 'Maak uw eerste Pagina aan.');
+        } else {
+            return redirect()->route('register', compact('page'));
         }
     }
 
