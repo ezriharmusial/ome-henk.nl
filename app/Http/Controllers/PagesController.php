@@ -17,7 +17,7 @@ class PagesController extends Controller
 
     public function index(Page $page)
     {
-        $page = (Page::first()->exists) ? Page::first() : New Page;
+        $page = (is_null(Page::first())) ? New Page : Page::first();
 
         if ( is_null(User::first())) {
             return redirect()->route('register', compact('page'));
