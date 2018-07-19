@@ -1,6 +1,9 @@
 @php
+// dd(\App\User::first());
 if ( is_null(\App\User::first()))
     $beheerder = 'Beheerder';
+else
+    $beheerder = null;
 @endphp
 @extends('layouts.master')
 

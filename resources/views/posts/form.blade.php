@@ -16,7 +16,7 @@
         </div>
 
         <div class="field">
-            <label class="label">Subtitel</label>
+            <label class="label">Artikel Subtitel</label>
             <div class="control">
                 <input class="input" id="subtitle" name="subtitle" type="text" placeholder="Subtitel van Artikel" value="{{ $post->subtitle }}" required>
             </div>

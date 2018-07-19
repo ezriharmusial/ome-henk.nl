@@ -1,0 +1,7 @@
+#featured-image-toggle {
+  display: none;
+  cursor: pointer
+}
+#featured-image-toggle:checked ~ #featured-image-modal {
+  display: flex;
+}

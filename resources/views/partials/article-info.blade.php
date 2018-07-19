@@ -1,31 +1,37 @@
-@auth
-@if ( !is_null( \App\Page::first() ) )
 @php
 // dd(Request::route()->getName(), in_array(Request::route()->getName(), ['posts.show', 'posts.index']));
 if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
     $article = $post;
+    $articleType = "Artikel";
 } else {
     $article = $page;
+    $articleType = "Pagina";
 }
 @endphp
-                    <div class="box notification is-light content">
-                        <p class="subtitle">Aanvullende Informatie</p>
+                    @if ( $article->published != 1 )
+                    <div class="notification is-info content">
+                        <span class="fa fa-info"> </span> Deze {{ $articleType }} is niet gepubliceerd en daarom niet zichtbaar voor anderen.
+                    </div>
+                    @endif
+
+
+                    <div class="notification is-light content">
+                        <p class="subtitle">Aanvullende {{ $articleType }} Informatie</p>
                         <dl>
-                            {{ $article->title }}
                             @if( $article->getTable() == "pages" )
-                            <dt>Pagina bevat Artikelen:</dt>
+                            <dt>{{ $articleType }} bevat Artikelen:</dt>
                             <dd>{{ ($article->has_articles) ? "Ja" : "Nee" }}</dd>
                             @endif
-                            <dt>Status:</dt>
+                            <dt>{{ $articleType }} Status:</dt>
                             <dd>{{ ($article->published) ? "Gepubliceerd" : "Concept" }}</dd>
-                            <dt>Aangemaakt op:</dt>
+                            <dt>{{ $articleType }} Aangemaakt op:</dt>
                             <dd>{{ $article->created_at->diffForHumans() }}</dd>
-                            <dt>Aangepast op:</dt>
+                            <dt>{{ $articleType }} Aangepast op:</dt>
                             <dd>{{ $article->updated_at->diffForHumans() }}</dd>
                         </dl>
                         <div class="field is-grouped">
                             <p class="control">
-                                <a href="{{ url()->full() }}/bewerken" class="button is-outlined is-link">
+                                <a href="{{ url()->full() }}/bewerken" class="button is-link">
                                    <span class="icon">
                                         <i class="fa fa-edit"></i>
                                     </span>
@@ -46,5 +52,3 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                             </form>
                         </div>
                     </div>
-@endif
-@endauth

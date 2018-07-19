@@ -10,12 +10,13 @@
 @import "~bulma-iconpicker/dist/css/bulma-iconpicker.sass";
 @import "~bulma-switch/src/sass/index.sass";
 
+// Import Partials
+@import "bulma/layout/hero";
 @import "bulma/elements/notification";
 @import "bulma/elements/bd-callout";
-
-
-// Import Partials
-@import "navbar";
+@import "bulma/components/navbar";
+@import "bulma/components/tabs";
+@import "bulma/components/modal";
 
 @import "~font-awesome/scss/font-awesome";
 

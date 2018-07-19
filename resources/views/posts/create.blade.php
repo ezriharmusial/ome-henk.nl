@@ -5,9 +5,9 @@
   <script>tinymce.init({ selector:'textarea' });</script>
 @endsection
 
-@section ('page-header-style')
-@if ($avatarUrl = $page->getFirstMediaUrl('page-headers', 'full'))
-style="background-image: url('{{ $avatarUrl }}');background-size: cover;"
+@section ('page-header-bg')
+@if ($pageHeaderUrl = $page->getFirstMediaUrl('page-headers', 'full'))
+style="background-image: url('{{ $pageHeaderUrl }}');background-size: cover;"
 @endif
 @endsection
 
@@ -44,12 +44,12 @@ voor op de "{{ $page->title}}" pagina
                 @if ($media = $post->getFirstMedia('featured-images') )
                     {{ $media('full')}}
                 @else
-                <img src="http://via.placeholder.com/640/00d1b2/ffffff?text=1280px%20*%20960px">
+                <img src="https://via.placeholder.com/640/00d1b2/ffffff?text=1280px%20*%20960px">
                 @endif
                 </figure>
                 <div class="file has-name is-right is-fullwidth">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="featured-image">
+                        <input class="file-input" type="file" name="featured-image" id="file">
                         <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fa fa-image"></i>
@@ -58,7 +58,7 @@ voor op de "{{ $page->title}}" pagina
                                 Uploaden
                             </span>
                         </span>
-                        <span class="file-name">
+                        <span class="file-name" id="filename">
                             {{ ( $pageHeader = $post->getFirstMedia('featured-images') ) ? $pageHeader->file_name : "Een bestand kiezen..." }}
                         </span>
                     </label>

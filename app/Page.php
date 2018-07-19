@@ -25,7 +25,7 @@ class Page extends Model implements HasMedia
         $this
             ->addMediaCollection('page-headers')
             ->acceptsFile(function (File $file) {
-                return $file->mimeType === 'image/jpeg';
+                return in_array($file->mimeType, ['image/jpeg', 'image/png', 'image/gif', 'image/tiff']);
             })->singleFile();
     }
 

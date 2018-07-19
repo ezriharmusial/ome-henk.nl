@@ -27,7 +27,7 @@ Uw Profiel wijzigen?
                 {{ method_field('PATCH') }}
                 <div class="media-left">
                     <figure class="image is-128x128">
-                        <img src="{{ ($avatarUrl = Auth::user()->getFirstMediaUrl('avatar', 'thumb')) ? $avatarUrl : "http://via.placeholder.com/128/00d1b2/ffffff"}}">
+                        <img src="{{ ($avatarUrl = Auth::user()->getFirstMediaUrl('avatar', 'thumb')) ? $avatarUrl : "https://via.placeholder.com/128/00d1b2/ffffff"}}">
                     </figure>
                 </div>
                 <div class="media-content">
@@ -35,7 +35,7 @@ Uw Profiel wijzigen?
                         <label class="label">Profielfoto</label>
                         <div class="file has-name is-fullwidth">
                             <label class="file-label">
-                                <input id="avatar" class="file-input" type="file" name="avatar">
+                                <input id="file" class="file-input" type="file" name="avatar">
                                 <span class="file-cta">
                                     <span class="file-icon">
                                         <i class="fa fa-image"></i>
@@ -44,7 +44,7 @@ Uw Profiel wijzigen?
                                         Bestand kiezen…
                                     </span>
                                 </span>
-                                <span class="file-name">
+                                <span class="file-name" id="filename">
                                     {{ ( $avatar = Auth::user()->getFirstMedia('avatar') ) ? $avatar->file_name : "Een bestand kiezen..." }}
                                 </span>
                             </label>

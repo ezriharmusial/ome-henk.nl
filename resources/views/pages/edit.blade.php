@@ -39,12 +39,12 @@ voor op Ome-Henk.nl
                 @if ($media = $page->getFirstMedia('page-headers') )
                     {{ $media('full')}}
                 @else
-                <img src="http://via.placeholder.com/640/320/00d1b2/ffffff?text=1280px%20*%20640px">
+                <img src="https://via.placeholder.com/640/320/00d1b2/ffffff?text=1280px%20*%20640px">
                 @endif
                 </figure>
                 <div class="file has-name is-right is-fullwidth">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="page-header">
+                        <input class="file-input" type="file" name="page-header" id="file">
                         <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fa fa-image"></i>
@@ -53,7 +53,7 @@ voor op Ome-Henk.nl
                                 Uploaden
                             </span>
                         </span>
-                        <span class="file-name">
+                        <span class="file-name"  id="filename">
                             {{ ( $pageHeader = $page->getFirstMedia('page-headers') ) ? $pageHeader->file_name : "Een bestand kiezen..." }}
                         </span>
                     </label>

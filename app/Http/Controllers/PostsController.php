@@ -37,7 +37,7 @@ class PostsController extends Controller
         return view('posts.create', compact('page', 'post'));
     }
 
-    public function store(Request $request, Page $page)
+    public function store(Request $request, Page $page, Post $post)
     {
 
         $this->validate(request(), [

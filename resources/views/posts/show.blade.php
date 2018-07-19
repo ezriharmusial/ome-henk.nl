@@ -8,8 +8,11 @@
 @endsection
 
 @section ('page-header-style')
-@if ($avatarUrl = $page->getFirstMediaUrl('page-headers', 'full'))
-style="background-image: url('{{ $avatarUrl }}');background-size: cover;"
+is-medium
+@endsection
+@section ('page-header-bg')
+@if ($featuredImageUrl = $post->getFirstMediaUrl('featured-images', 'full'))
+style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
 @endif
 @endsection
 
@@ -22,9 +25,33 @@ style="background-image: url('{{ $avatarUrl }}');background-size: cover;"
                     @include('posts.article')
                     {{-- @include('partials.comments') --}}
                 </div>
-                <div class="column is-one-forth is-narrow">
+                <div class="column is-one-third">
+                    @if ($media = $post->getFirstMedia('featured-images') )
+                    <label for="featured-image-toggle">
+                        <figure class="image is-3by2">
+                            {{ $media('full')}}
+                        </figure>
+                    </label>
+                    @endif
+
+                    @if ( !is_null(Auth::user()) && !is_null( \App\Page::first() ) )
                     @include ('partials.article-info')
+                    @endif
                 </div>
             </div>
+@endsection
+@section ('footer')
+        <input id="featured-image-toggle" type="checkbox" />
+        <div class="modal" id="featured-image-modal">
+            <label for="featured-image-toggle">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <figure class="image is-3by2">
+                        {{ $media('full')}}
+                    </figure>
+                </div>
+                <div class="modal-close is-large" for="featured-image-toggle"></div>
+            </label>
+        </div>
 @endsection
 

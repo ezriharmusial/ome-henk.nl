@@ -37,7 +37,7 @@
                                 <div class="navbar-link">
                                     <span class="icon is-medium">
                                         <figure class="image is-24x24">
-                                            <img src="{{ ($avatarUrl = Auth::user()->getFirstMediaUrl('avatar', 'mini')) ? $avatarUrl : "http://via.placeholder.com/28/00d1b2/ffffff"}}">
+                                            <img src="{{ ($avatarUrl = Auth::user()->getFirstMediaUrl('avatar', 'mini')) ? $avatarUrl : "https://via.placeholder.com/28/00d1b2/ffffff"}}">
                                         </figure>
                                     </span>
                                     <span>Welkom, {{ Auth::user()->name }}</span>

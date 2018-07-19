@@ -20,7 +20,7 @@ class PagesController extends Controller
         $page = (is_null(Page::first())) ? New Page : Page::first();
 
         if ( $page->exists ) {
-            return route('pages.show', compact('page'));
+            return redirect()->route('pages.show', compact('page'));
         } elseif ( $page->exists == false && auth() ) {
             return redirect()->route('pages.create', compact('page'))->with('warning', 'Maak uw eerste Pagina aan.');
         } else {
@@ -67,7 +67,7 @@ class PagesController extends Controller
             $page
         );
 
-        return route('pages.show', compact('page'))->with('success', 'Pagina aangemaakt');
+        return redirect()->route('pages.show', compact('page'))->with('success', 'Pagina aangemaakt');
     }
 
     public function edit(Page $page)

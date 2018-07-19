@@ -3,8 +3,11 @@
 | {{ $page->title or 'Welkom op Ome-Henk.nl' }}
 @endsection
 @section ('page-header-style')
-@if ($avatarUrl = $page->getFirstMediaUrl('page-headers', 'full'))
-style="background-image: url('{{ $avatarUrl }}');background-size: cover;"
+is-large
+@endsection
+@section ('page-header-bg')
+@if ($pageHeaderUrl = $page->getFirstMediaUrl('page-headers', 'full'))
+style="background-image: url('{{ $pageHeaderUrl }}');background-size: cover;"
 @endif
 @endsection
 @section ('title')
@@ -24,56 +27,64 @@ style="background-image: url('{{ $avatarUrl }}');background-size: cover;"
 @endsection
 
 @section ('content')
+{{--                         <h3 class="title">
+                <span class="icon">
+                    <i class="{{ $page->title_icon or "fa fa-wrench" }}"></i>
+                </span>
+                <span>{{ $page->title or "Wij zijn druk bezig" }}</span>
+            </h3>
+            <h4 class="subtitle has-text-weight-light"><span>{{ $page->subtitle or "Om ome-henk.nl voor u gereed te maken" }}</span></h4> --}}
             <div class="columns">
                 <div class="column">
-                    <article>
-{{--                         <h3 class="title">
-                            <span class="icon">
-                                <i class="{{ $page->title_icon or "fa fa-wrench" }}"></i>
-                            </span>
-                            <span>{{ $page->title or "Wij zijn druk bezig" }}</span>
-                        </h3>
-                        <h4 class="subtitle has-text-weight-light"><span>{{ $page->subtitle or "Om ome-henk.nl voor u gereed te maken" }}</span></h4> --}}
-                        <div class="content">
-                            @if ( $page->exists() )
-                            {!! $page->content !!}
-                            @else
-                                <p>Achter de schermen gebeurt er van alles. Komt u binnenkort weer terug een kijkje nemen?</p>
-                            @endif
-                        </div>
-                    </article>
-                    <hr>
-                    <section class="section">
+                    @include('pages.article')
+                    <section class="tile is-ancestor is-vertical">
                         @if ($page->has_articles)
+                        <hr>
                         @auth
-                        <a href="{{ route('posts.create', $page->slug) }}" class="button is-outlined is-primary is-fullwidth">
-                            <span class="icon is-small">
-                                <i class="fa fa-plus"></i>
-                            </span>
-                            <span>Nieuw Artikel Aanmaken</span>
-                        </a>
-                        @endauth
-                    </section>
-                    <section class="section">
-                        @foreach ($page->posts as $post)
-                        <a href="{{ route('posts.show', [$page->slug, $post->slug]) }}" title="{{ $post->title }}" class="columns">
-                            {{-- Display Featured Article Image if it is there --}}
-                            @if ( isset($post->featured_image) )
-                            <div class="column is-4">
-                                <figure class="image is-16by9">
-                                    <img src="/images/{{ $post->featured_image }}')" title="{{ $post->title }}">
+                        <a href="{{ route('posts.create', $page->slug) }}" class="box notification is-primary tile">
+                            <div class="tile is-4">
+                                <figure class="tile image is-3by2">
+                                    <img src="https://via.placeholder.com/128/00c0a1/ffffff">
                                 </figure>
                             </div>
-                            @endif
-                        @include ('posts.article')
+                            <div class="tile is-parent">
+                                <div class="tile is-child">
+                                    <h4 class="title is-size-4">
+                                        <span class="icon is-small">
+                                            <i class="fa fa-plus"></i>
+                                        </span>
+                                        <span>Nieuw Artikel Aanmaken</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                        @endauth
+
+                        @foreach ($page->posts as $post)
+                        <a href="{{ route('posts.show', [$page->slug, $post->slug]) }}" title="{{ $post->title }}" class="box notification is-white tile">
+                            {{-- Display Featured Article Image if it is there --}}
+                            <div class="tile is-4">
+                                <figure class="tile image is-3by2">
+                                @if ($media = $post->getFirstMedia('featured-images') )
+                                    {{ $media('full')}}
+                                @else
+                                <img src="https://via.placeholder.com/640/00d1b2/ffffff?text=1280px%20*%20960px">
+                                @endif
+                                </figure>
+                            </div>
+                            <div class="tile is-parent">
+                                @include ('posts.article')
+                            </div>
                         </a>
                         @endforeach
                         @endif
                     </section>
                 </div>
-                <div class="column  is-one-forth is-narrow">
+                @if ( !is_null(Auth::user()) && !is_null( \App\Page::first() ) )
+                <div class="column is-one-third">
                     @include ('partials.article-info')
                 </div>
+                @endif
             </div>
 @endsection
 

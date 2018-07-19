@@ -8,7 +8,7 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
 }
 @endphp
  --}}
- <section class="hero is-primary is-bold" @yield('page-header-style')>
+ <section class="hero is-primary is-bold @yield('page-header-style')" @yield('page-header-bg')>
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
             @include ('partials.nav')
