@@ -22,7 +22,8 @@
                                 </span>
                                 <span>Aanmelden</span>
                             </a>
-                            @if(is_null(\App\User::first()))
+                            {{-- @if(is_null(\App\User::first())) --}}
+                            @if( \App\User::all()->count() <= 2 )
                             <span class="navbar-item">
                                 <a href="{{ route('register') }}" class="button is-primary is-inverted">
                                     <span class="icon is-medium">
