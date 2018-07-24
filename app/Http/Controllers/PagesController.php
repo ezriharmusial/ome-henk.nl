@@ -21,8 +21,10 @@ class PagesController extends Controller
 
         if ( $page->exists ) {
             return redirect()->route('pages.show', compact('page'));
-        } elseif ( $page->exists == false && auth() ) {
+        } elseif ( $page->exists == false && !is_null(auth()->user()) ) {
             return redirect()->route('pages.create', compact('page'))->with('warning', 'Maak uw eerste Pagina aan.');
+        } elseif ( $page->exists == false && is_null(auth()->user()) ) {
+            return redirect()->route('login', compact('page'))->with('warning', 'Login.');
         } else {
             return redirect()->route('register', compact('page'));
         }
