@@ -8,6 +8,7 @@
 // Bulma
 @import "~bulma";
 @import "~bulma-iconpicker/dist/css/bulma-iconpicker.sass";
+@import "bulma/packages/bulma-iconpicker";
 @import "~bulma-switch/src/sass/index.sass";
 
 // Import Partials
@@ -17,6 +18,7 @@
 @import "bulma/components/navbar";
 @import "bulma/components/tabs";
 @import "bulma/components/modal";
+@import "bulma/cursors";
 
 @import "~font-awesome/scss/font-awesome";
 

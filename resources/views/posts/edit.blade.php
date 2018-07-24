@@ -44,13 +44,15 @@ style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
         <div class="column is-one-third is-narrow">
             <label class="label">Artikel plaatjes</label>
             <div class="field">
-                <figure class="image is-3by2">
-                @if ($media = $post->getFirstMedia('featured-images') )
-                    {{ $media('full')}}
-                @else
-                <img src="https://via.placeholder.com/640/00d1b2/ffffff?text=1280px%20*%20960px">
-                @endif
-                </figure>
+                <label for="file">
+                    <figure class="image is-3by2">
+                    @if ($media = $post->getFirstMedia('featured-images') )
+                        {{ $media('full')}}
+                    @else
+                        <img src="https://via.placeholder.com/640/00d1b2/ffffff?text=1280px%20*%20960px">
+                    @endif
+                    </figure>
+                </label>
                 <div class="file has-name is-right is-fullwidth">
                     <label class="file-label">
                         <input class="file-input" type="file" name="featured-image" id="file">
@@ -59,26 +61,26 @@ style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
                                 <i class="fa fa-image"></i>
                             </span>
                             <span class="file-label">
-                                Uploaden
+                                Bestanden
                             </span>
                         </span>
                         <span class="file-name" id="filename">
-                            {{ ( $pageHeader = $post->getFirstMedia('featured-images') ) ? $pageHeader->file_name : "Een bestand kiezen..." }}
+                            {{ ( $pageHeader = $post->getFirstMedia('featured-images') ) ? $pageHeader->file_name : "Kies een Foto voor het Artikel Plaatje..." }}
                         </span>
                     </label>
                 </div>
             </div>
         </div>
     </div>
-    <div class="field is-grouped">
+    <div class="field is-grouped is-grouped-right">
         <div class="control">
+            <a class="button is-outlined is-danger" href="{{ URL::previous() }}">Annuleren</a>
             <button  type="submit" class="button is-primary">
                 <span class="icon">
                     <i class="fa fa-edit"></i>
                 </span>
-                <span>Artikel Opslaan</span>
+                <span>Wijzigingen Opslaan</span>
             </button>
-            <a class="button is-outlined is-danger" href="{{ URL::previous() }}">Annuleren</a>
         </div>
     </div>
 

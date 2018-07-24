@@ -26,9 +26,11 @@ Uw Profiel wijzigen?
                 @csrf
                 {{ method_field('PATCH') }}
                 <div class="media-left">
-                    <figure class="image is-128x128">
-                        <img src="{{ ($avatarUrl = Auth::user()->getFirstMediaUrl('avatar', 'thumb')) ? $avatarUrl : "https://via.placeholder.com/128/00d1b2/ffffff"}}">
-                    </figure>
+                    <label for="file">
+                        <figure class="image is-128x128">
+                            <img src="{{ ($avatarUrl = Auth::user()->getFirstMediaUrl('avatar', 'thumb')) ? $avatarUrl : "https://via.placeholder.com/128/00d1b2/ffffff"}}">
+                        </figure>
+                    </label>
                 </div>
                 <div class="media-content">
                     <div class="field">
@@ -41,11 +43,11 @@ Uw Profiel wijzigen?
                                         <i class="fa fa-image"></i>
                                     </span>
                                     <span class="file-label">
-                                        Bestand kiezen…
+                                        Bestanden
                                     </span>
                                 </span>
                                 <span class="file-name" id="filename">
-                                    {{ ( $avatar = Auth::user()->getFirstMedia('avatar') ) ? $avatar->file_name : "Een bestand kiezen..." }}
+                                    {{ ( $avatar = Auth::user()->getFirstMedia('avatar') ) ? $avatar->file_name : "Kies een Foto voor uw Avatar..." }}
                                 </span>
                             </label>
                         </div>

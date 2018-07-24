@@ -29,7 +29,7 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                             <dt>{{ $articleType }} Aangepast op:</dt>
                             <dd>{{ $article->updated_at->diffForHumans() }}</dd>
                         </dl>
-                        <div class="field is-grouped">
+                        <div class="field is-grouped is-grouped-multiline">
                             <p class="control">
                                 <a href="{{ url()->full() }}/bewerken" class="button is-link">
                                    <span class="icon">

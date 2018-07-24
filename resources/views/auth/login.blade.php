@@ -7,7 +7,7 @@
         <span>Bezoeker Aanmelden</span>
 @endsection
 @section ('subtitle')
-Dat Chat een stuk makkelijker
+Dan weet de site ook wie u bent
 @endsection
 
 @section('content')

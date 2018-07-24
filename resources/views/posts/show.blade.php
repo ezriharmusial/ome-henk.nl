@@ -27,9 +27,9 @@ style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
                 </div>
                 <div class="column is-one-third">
                     @if ($media = $post->getFirstMedia('featured-images') )
-                    <label for="featured-image-toggle">
+                    <label class="has-zoom-in-cursor" for="featured-image-toggle">
                         <figure class="image is-3by2">
-                            {{ $media('full')}}
+                            {{ $media('full') }}
                         </figure>
                     </label>
                     @endif
@@ -47,7 +47,7 @@ style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
                 <div class="modal-background"></div>
                 <div class="modal-content">
                     <figure class="image is-3by2">
-                        {{ $media('full')}}
+                        {{ $post->getFirstMedia('featured-images') }}
                     </figure>
                 </div>
                 <div class="modal-close is-large" for="featured-image-toggle"></div>

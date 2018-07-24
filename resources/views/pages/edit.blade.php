@@ -35,13 +35,15 @@ voor op Ome-Henk.nl
         <div class="column is-one-third is-narrow">
             <label class="label">Header Achtergrond</label>
             <div class="field">
-                <figure class="image is-2by1">
-                @if ($media = $page->getFirstMedia('page-headers') )
-                    {{ $media('full')}}
-                @else
-                <img src="https://via.placeholder.com/640/320/00d1b2/ffffff?text=1280px%20*%20640px">
-                @endif
-                </figure>
+                <label for="file">
+                    <figure class="image is-2by1">
+                    @if ($media = $page->getFirstMedia('page-headers') )
+                        {{ $media('full')}}
+                    @else
+                        <img src="https://via.placeholder.com/640/320/00d1b2/ffffff?text=1280px%20*%20640px">
+                    @endif
+                    </figure>
+                </label>
                 <div class="file has-name is-right is-fullwidth">
                     <label class="file-label">
                         <input class="file-input" type="file" name="page-header" id="file">
@@ -50,26 +52,26 @@ voor op Ome-Henk.nl
                                 <i class="fa fa-image"></i>
                             </span>
                             <span class="file-label">
-                                Uploaden
+                                Bestanden
                             </span>
                         </span>
                         <span class="file-name"  id="filename">
-                            {{ ( $pageHeader = $page->getFirstMedia('page-headers') ) ? $pageHeader->file_name : "Een bestand kiezen..." }}
+                            {{ ( $pageHeader = $page->getFirstMedia('page-headers') ) ? $pageHeader->file_name : "Kies een Foto voor de Header Achtergrond..." }}
                         </span>
                     </label>
                 </div>
             </div>
         </div>
     </div>
-    <div class="field is-grouped">
+    <div class="field is-grouped is-grouped-right">
         <div class="control">
+            <a class="button is-outlined is-danger" href="{{ URL::previous() }}">Annuleren</a>
             <button  type="submit" class="button is-primary">
                 <span class="icon">
                     <i class="fa fa-edit"></i>
                 </span>
-                <span>Pagina Opslaan</span>
+                <span>Wijzigingen Opslaan</span>
             </button>
-            <a class="button is-outlined is-danger" href="{{ URL::previous() }}">Annuleren</a>
         </div>
     </div>
 </form>

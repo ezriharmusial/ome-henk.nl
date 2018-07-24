@@ -1,0 +1,28 @@
+// Increase overal Icon size
+.iconpicker-modal .modal-card .modal-card-head {
+    .iconpicker-search {
+        font-size: 18px;
+    }
+}
+/* Minimalize Modal Header for Small Devices Mobile Phones */
+@media (max-width: 639px) {
+    .iconpicker-modal .modal-card .modal-card-head {
+        .modal-card-title {
+            display: none;
+        }
+
+        .iconpicker-search {
+            margin: 0 10px 0 0;
+            width: 70vw;
+        }
+    }
+}
+
+.iconpicker-modal .modal-card-body .iconpicker-icons [data-icon] {
+    width: 56px;
+    height: 56px;
+
+    .iconpicker-icon-preview {
+        font-size: 1.8em;
+    }
+}
