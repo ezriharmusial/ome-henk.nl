@@ -13,8 +13,8 @@ class UserController extends Controller
 {
     function __construct()
     {
-         // $this->middleware('permission:userrole-list');
-         // $this->middleware('permission:userrole-crud', ['only' => ['create','store','edit','update','destroy']]);
+         $this->middleware('permission:userrole-list')->except(['index', 'show']);
+         $this->middleware('permission:userrole-crud', ['only' => ['create','store','edit','update','destroy']]);
     }
 
     /**

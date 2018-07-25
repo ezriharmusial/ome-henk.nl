@@ -28,6 +28,7 @@ voor op Ome-Henk.nl
             <td>{{ $role->name }}</td>
             <td>
                 <div class="field is-grouped is-grouped-right">
+                    @can('userrole-crud')
                     {{-- <p class="control">
                         <a class="button is-info" href="{{ route('roles.show',$role->id) }}">
                             <span class="icon">
@@ -56,6 +57,7 @@ voor op Ome-Henk.nl
                             </button>
                         </p>
                     </form>
+                    @endcan
                 </div>
             </td>
         </tr>

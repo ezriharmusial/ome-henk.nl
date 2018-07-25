@@ -40,7 +40,7 @@ style="background-image: url('{{ $pageHeaderUrl }}');background-size: cover;"
                     <section class="tile is-ancestor is-vertical">
                         @if ($page->has_articles)
                         <hr>
-                        @auth
+                        @can('pagepost-crud')
                         <a href="{{ route('posts.create', $page->slug) }}" class="box notification is-primary tile">
                             <div class="tile is-4">
                                 <figure class="tile image is-3by2">
@@ -58,7 +58,7 @@ style="background-image: url('{{ $pageHeaderUrl }}');background-size: cover;"
                                 </div>
                             </div>
                         </a>
-                        @endauth
+                        @endcan
 
                         @foreach ($page->posts as $post)
                         <a href="{{ route('posts.show', [$page->slug, $post->slug]) }}" title="{{ $post->title }}" class="box notification is-white tile">

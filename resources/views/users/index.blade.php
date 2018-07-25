@@ -44,6 +44,7 @@ voor op Ome-Henk.nl
             </td>
             <td>
                 <div class="field is-grouped">
+                    @can('userrole-crud')
                     {{-- <p class="control">
                         <a class="button is-info" href="{{ route('users.show',$user->id) }}">
                             <span class="icon">
@@ -72,7 +73,6 @@ voor op Ome-Henk.nl
                             </button>
                         </p>
                     </form>
-                    @can('userrole-crud')
                     @endcan
                 </div>
             </td>

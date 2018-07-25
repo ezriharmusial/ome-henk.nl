@@ -24,7 +24,7 @@ class RoleTableSeeder extends Seeder
             $role = Role::create(['name' => $roleName]);
 
             foreach ($rolePermissions as $permission_id) {
-                DB::table('role_has_permission')->insert([
+                DB::table('role_has_permissions')->insert([
                     'permission_id' => $permission_id,
                     'role_id' => $role->id
                 ]);

@@ -44,6 +44,7 @@
                                 </div>
 
                                 <div class="navbar-dropdown">
+                                    @can('userrole-crud')
                                     <a class="navbar-item" href="{{ route('users.index') }}">
                                         <span class="icon is-medium">
                                             <i class="fa fa-users"></i>
@@ -56,7 +57,6 @@
                                         </span>
                                         <span>Rollen Beheren</span>
                                     </a>
-                                    @can('userrole-crud')
                                     @endcan
                                     <a class="navbar-item" href="{{ route('profile') }}">
                                         <span class="icon is-medium">
