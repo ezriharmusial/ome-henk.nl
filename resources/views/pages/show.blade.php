@@ -80,11 +80,13 @@ style="background-image: url('{{ $pageHeaderUrl }}');background-size: cover;"
                         @endif
                     </section>
                 </div>
+                @can('pagepost-crud')
                 @if ( !is_null(Auth::user()) && !is_null( \App\Page::first() ) )
                 <div class="column is-one-third">
                     @include ('partials.article-info')
                 </div>
                 @endif
+                @endcan
             </div>
 @endsection
 

@@ -37,8 +37,29 @@ Dan weet Ome-Henk.nl, wie jij bent
                 <p>Vult u hier eerst uw persoonlijke gegevens in. Zodat de website weet wie u bent.</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-
                     <div class="field">
+                        <label for="name">{{ __('Naam') }}</label>
+                        <p class="control has-icons-left has-icons-right">
+                            <input id="name" type="text" class="input{{ $errors->has('name') ? ' is-danger' : '' }}" name="name" value="{{ $user->name or old('name') }}" required autofocus>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            @if ($errors->has('name'))
+                            <span class="icon is-small is-right">
+                                <i class="fa fa-cross"></i>
+                            </span>
+                            @endif
+                        </p>
+                        @if ($errors->has('name'))
+                        <p class="help is-danger">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </p>
+                        @endif
+                    </div>
+
+                    @include('auth.form')
+
+{{--                     <div class="field">
                         <label for="name">{{ __('Naam') }}</label>
                         <p class="control has-icons-left has-icons-right">
                             <input id="name" type="text" class="input{{ $errors->has('name') ? ' is-danger' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -77,26 +98,7 @@ Dan weet Ome-Henk.nl, wie jij bent
                         </p>
                         @endif
                     </div>
-
-                    <div class="field">
-                        <label for="password">{{ __('Wachtwoord') }}</label>
-                        <p class="control has-icons-left has-icons-right">
-                            <input id="password" type="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" name="password" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-lock"></i>
-                            </span>
-                            @if ($errors->has('password'))
-                            <span class="icon is-small is-right">
-                                <i class="fa fa-cross"></i>
-                            </span>
-                            @endif
-                        </p>
-                        @if ($errors->has('password'))
-                        <p class="help is-danger">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </p>
-                        @endif
-                    </div>
+ --}}
 
                     <div class="field">
                         <label for="password-confirm">{{ __('Bevestig Wachtwoord') }}</label>
@@ -110,7 +112,7 @@ Dan weet Ome-Henk.nl, wie jij bent
 
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  type="submit" class="button is-primary">
+                            <button type="submit" class="button is-primary">
                                 <span class="icon">
                                     <i class="fa fa-user-plus"></i>
                                 </span>

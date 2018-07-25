@@ -11,7 +11,8 @@
         "intervention/imagecache": "^2.3",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-medialibrary": "^7.3"
+        "spatie/laravel-medialibrary": "^7.3",
+        "spatie/laravel-permission": "^2.12"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

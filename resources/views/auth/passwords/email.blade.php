@@ -1,47 +1,59 @@
-@extends('layouts.app')
+@extends ('layouts.master')
+@section ('window-title', '| Wachtwoord Reset Aanvragen')
+@section ('title')
+        <span class="icon is-medium">
+            <i class="fa fa fa-envelope-open"></i>
+        </span>
+        <span>Wachtwoord Reset Aanvragen</span>
+@endsection
+@section ('subtitle')
+Zodat u weer in kunt loggen
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                <form method="POST" action="{{ route('password.email') }}">
+                    @csrf
+                    <div class="columns">
+                        <div class="column">
+                            <div class="field">
+                                <label for="email">{{ __('E-Mail Adres') }}</label>
+                                <p class="control has-icons-left has-icons-right">
+                                    <input id="email" type="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" name="email" value="{{ $user->email or old('email') }}" required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-envelope"></i>
                                     </span>
+                                    @if ($errors->has('email'))
+                                    <span class="icon is-small is-right">
+                                        <i class="fa fa-cross"></i>
+                                    </span>
+                                    @endif
+                                </p>
+                                @if ($errors->has('email'))
+                                <p class="help is-danger">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </p>
                                 @endif
                             </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button  type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
+                            <div class="field is-grouped is-grouped-right">
+                                <div class="control">
+                                    <a class="button is-outlined is-danger" href="{{ route('pages.index') }}">Annuleren</a>
+                                    <button type="submit" class="button <is-info></is-info>">
+                                        <span class="icon">
+                                            <i class="fa fa-envelope-open"></i>
+                                        </span>
+                                        <span>{{ __('Reset Link Sturen') }}</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+                        <div class="column">
+                            <div class="box notification is-info content">
+                                <p class="subtitle">U bent uw wachtwoord vergeten of verloren?</p>
+                                <p>Geen paniek... Vul uw emailadres in waarmee op deze site geregistreerd bent, dan sturen wij u een Reset Link waarmee u een nieuw wachtwoord kunt instellen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
 @endsection

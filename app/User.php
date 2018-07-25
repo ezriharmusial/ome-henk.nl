@@ -9,6 +9,8 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\File;
 
+use Spatie\Permission\Traits\HasRoles;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -16,6 +18,7 @@ class User extends Authenticatable implements HasMedia
 {
     use Notifiable;
     use HasMediaTrait;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.

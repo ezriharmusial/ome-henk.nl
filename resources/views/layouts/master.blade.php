@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app()->getLocale() }}">
 @include('partials.head')
 <body>
     @include('partials.page-header')

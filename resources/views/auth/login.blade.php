@@ -20,7 +20,8 @@ Dan weet de site ook wie u bent
                 </h2>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <div class="field">
+                    @include('auth.form')
+{{--                     <div class="field">
                         <label for="email">{{ __('E-Mail Adres') }}</label>
                         <p class="control has-icons-left has-icons-right">
                             <input id="email" type="email" class="input {{ $errors->has('email') ? ' is-error' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
@@ -53,7 +54,7 @@ Dan weet de site ook wie u bent
                             {{ $errors->first('password') }}
                         </p>
                         @endif
-                    </div>
+                    </div> --}}
 
                     <div class="field">
                         <p class="control">
@@ -65,7 +66,7 @@ Dan weet de site ook wie u bent
 
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  type="submit" class="button is-primary">
+                            <button type="submit" class="button is-primary">
                                 <span class="icon is-medium">
                                     <i class="fa fa-sign-in"></i>
                                 </span>

@@ -15,37 +15,33 @@ Auth::routes();
 
 Route::view('/privacy', 'static.privacy')->name('privacy-statement');
 
-// Dashboard?
-Route::get('/home', 'Auth\HomeController@index')->name('home');
-Route::get('/profiel', 'Auth\ProfileController@edit')->name('profile');
-Route::match(['put', 'patch'], '/profiel', 'Auth\ProfileController@update')->name('profile.update');
-// Route::get('/home', 'PagesController@index');
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+    // Dashboard?
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/profiel', 'Auth\ProfileController@edit')->name('profile');
+    Route::match(['put', 'patch'], '/profiel', 'Auth\ProfileController@update')->name('profile.update');
 
-// Paginas
-Route::get('/', 'PagesController@index')->name('pages.index');
-Route::post('/pagina', 'PagesController@store')->name('pages.store');
-Route::get('/pagina/aanmaken', 'PagesController@create')->name('pages.create');
-Route::get('/{page}/bewerken', 'PagesController@edit')->name('pages.edit');
-Route::delete('/{page}/verwijderen/', 'PagesController@destroy')->name('pages.destroy');
-Route::get('/{page}', 'PagesController@show')->name('pages.show');
-Route::match(['put', 'patch'], '/{page}', 'PagesController@update')->name('pages.update');
+    // Paginas
+    Route::post('/pagina', 'PagesController@store')->name('pages.store');
+    Route::get('/pagina/aanmaken', 'PagesController@create')->name('pages.create');
+    Route::get('/{page}/bewerken', 'PagesController@edit')->name('pages.edit');
+    Route::delete('/{page}/verwijderen/', 'PagesController@destroy')->name('pages.destroy');
+    Route::match(['put', 'patch'], '/{page}', 'PagesController@update')->name('pages.update');
 
-// Pagina Artikeltjes
-Route::post('/{page}/artikel', 'PostsController@store')->name('posts.store');
-Route::get('/{page}/artikel/aanmaken', 'PostsController@create')->name('posts.create');
-Route::get('/{page}/{post}/bewerken', 'PostsController@edit')->name('posts.edit');
-// Route::get('/{page}/{post}/bewerken', function($pageslug, $postslug){
-//     dd($pageslug, $postslug);
-// })->name('posts.edit');
-Route::get('/{page}/{post}', 'PostsController@show')->name('posts.show');
-Route::match(['put', 'patch'], '/{page}/{post}', 'PostsController@update')->name('posts.update');
-Route::delete('/{page}/{post}/verwijderen', 'PostsController@destroy')->name('posts.destroy');
-// Route::resource('posts', 'PostsController');
+    // Pagina Artikeltjes
+    Route::post('/{page}/artikel', 'PostsController@store')->name('posts.store');
+    Route::get('/{page}/artikel/aanmaken', 'PostsController@create')->name('posts.create');
+    Route::get('/{page}/{post}/bewerken', 'PostsController@edit')->name('posts.edit');
+    Route::match(['put', 'patch'], '/{page}/{post}', 'PostsController@update')->name('posts.update');
+    Route::delete('/{page}/{post}/verwijderen', 'PostsController@destroy')->name('posts.destroy');
+    // Route::resource('posts', 'PostsController');
 
-// Artikel Commentaar
-Route::post('/{page}/{post}/reacties', 'CommentsController@store')->name('storeComment');
+    // Artikel Commentaar
+    Route::post('/{page}/{post}/reacties', 'CommentsController@store')->name('storeComment');
+});
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'PagesController@index')->name('pages.index');
+    Route::get('/{page}', 'PagesController@show')->name('pages.show');
+    Route::get('/{page}/{post}', 'PostsController@show')->name('posts.show');

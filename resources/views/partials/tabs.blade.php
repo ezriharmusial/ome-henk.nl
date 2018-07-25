@@ -17,8 +17,7 @@
                     </li>
 
 @endforeach
-@if (Auth::check())
-
+                @can('pagepost-crud')
                 <li{{ (Route::current()->getName() == 'pages.create') ? ' class=is-active' : '' }}>
                     <a href="{{ route('pages.create') }}">
                         <span class="icon is-small">
@@ -27,6 +26,6 @@
                         <span>Nieuwe Pagina</span>
                     </a>
                 </li>
-@endif
+                @endcan
             </ul>
         </nav>

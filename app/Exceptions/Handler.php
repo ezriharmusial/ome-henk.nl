@@ -46,6 +46,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+            return response()->json(['Toegang is voor u niet toegestaan.']);
+        }
+
         return parent::render($request, $exception);
     }
 }

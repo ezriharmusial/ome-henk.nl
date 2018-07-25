@@ -66,7 +66,7 @@ voor op Ome-Henk.nl
     <div class="field is-grouped is-grouped-right">
         <div class="control">
             <a class="button is-outlined is-danger" href="{{ URL::previous() }}">Annuleren</a>
-            <button  type="submit" class="button is-primary">
+            <button type="submit" class="button is-primary">
                 <span class="icon">
                     <i class="fa fa-edit"></i>
                 </span>

@@ -12968,12 +12968,14 @@ label.panel-block:hover {
   z-index: 2147483647;
 }
 
-#featured-image-toggle {
+#featured-image-toggle,
+#delete-confirmation-toggle {
   display: none;
   cursor: pointer;
 }
 
-#featured-image-toggle:checked ~ #featured-image-modal {
+#featured-image-toggle:checked ~ #featured-image-modal,
+#delete-confirmation-toggle:checked ~ #delete-confirmation-modal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

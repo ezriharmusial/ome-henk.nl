@@ -12,7 +12,9 @@ class PagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['show', 'index']);
+        // $this->middleware('auth')->except(['show', 'index']);
+        $this->middleware('permission:pagepost-list')->except(['show', 'index']);
+        $this->middleware('permission:pagepost-crud', ['only' => ['create','store','edit','update','destroy']]);
     }
 
     public function index(Page $page)

@@ -34,9 +34,11 @@ style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
                     </label>
                     @endif
 
+                    @can('pagepost-crud')
                     @if ( !is_null(Auth::user()) && !is_null( \App\Page::first() ) )
                     @include ('partials.article-info')
                     @endif
+                    @endcan
                 </div>
             </div>
 @endsection

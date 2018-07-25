@@ -2,7 +2,7 @@
 @section ('window-title', '| Privacybeleid')
 @section ('title')
         <span class="icon is-medium">
-            <i class="fa fa-user-secret"></i>
+            <i class="fa fa-briefcase"></i>
         </span>
         <span>Mijn Privacybeleid</span>
 @endsection
@@ -14,7 +14,7 @@
         <div class="column content">
             <h1 class="title">
                 <span class="icon is-medium">
-                    <i class="fa fa-user-secret"></i>
+                    <i class="fa fa-briefcase"></i>
                 </span>
                 <span>Mijn Privacybeleid</span>
             </h1>

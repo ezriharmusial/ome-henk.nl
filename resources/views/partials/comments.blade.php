@@ -41,7 +41,7 @@
                                 @endif
                                 <div class="field">
                                   <p class="control">
-                                    <button  class="button is-primary">
+                                    <button class="button is-primary">
                                         <span class="icon">
                                             <i class="fa fa-comment"></i>
                                         </span>

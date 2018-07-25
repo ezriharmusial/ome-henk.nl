@@ -44,6 +44,20 @@
                                 </div>
 
                                 <div class="navbar-dropdown">
+                                    <a class="navbar-item" href="{{ route('users.index') }}">
+                                        <span class="icon is-medium">
+                                            <i class="fa fa-users"></i>
+                                        </span>
+                                        <span>Gebruikers Beheren</span>
+                                    </a>
+                                    <a class="navbar-item" href="{{ route('roles.index') }}">
+                                        <span class="icon is-medium">
+                                            <i class="fa fa-suitcase"></i>
+                                        </span>
+                                        <span>Rollen Beheren</span>
+                                    </a>
+                                    @can('userrole-crud')
+                                    @endcan
                                     <a class="navbar-item" href="{{ route('profile') }}">
                                         <span class="icon is-medium">
                                             <i class="fa fa-user-circle"></i>

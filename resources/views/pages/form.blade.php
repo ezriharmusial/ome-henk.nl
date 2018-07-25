@@ -71,8 +71,8 @@
                 {{-- <label class="label">Pagina Inhoud</label> --}}
                 <!-- Create the toolbar container -->
 {{--                 <div id="toolbar">
-                  <button  class="ql-bold">Bold</button>
-                  <button  class="ql-italic">Italic</button>
+                  <button class="ql-bold">Bold</button>
+                  <button class="ql-italic">Italic</button>
                 </div> --}}
                 <label class="label">Pagina Inhoud</label>
                 <div class="control content">

@@ -37,18 +37,49 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                                     </span>
                                     <span>Bewerken</span>
                                 </a>
-                            </p>
-                            <form method="post" action="{{ url()->full() }}/verwijderen" >
-                                @csrf
-                                {{ method_field('DELETE') }}
                                 <p class="control">
-                                    <button  class="button is-outlined is-danger" type="submit">
+                                    <label class="button is-outlined is-danger" for="delete-confirmation-toggle">
                                        <span class="icon">
                                             <i class="fa fa-trash"></i>
                                         </span>
                                         <span>Verwijderen</span>
-                                    </button>
+                                    </label>
                                 </p>
-                            </form>
+                            </p>
                         </div>
                     </div>
+@section ('footer')
+        <input id="delete-confirmation-toggle" type="checkbox" />
+        <div class="modal" id="delete-confirmation-modal">
+            <label for="delete-confirmation-toggle">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <div class="box">
+                        <p class="subtitle">{{ $articleType }} Verwijderen?</p>
+                        <p class="content">Druk op Verwijderen om "{{ $article->title }}" te verwijderen.</p>
+                        <form method="post" action="{{ url()->full() }}/verwijderen" >
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <div class="field is-grouped is-grouped-right">
+                                <label for="delete-confirmation-toggle">
+                                    <a class="button is-outlined is-info">
+                                        <span class="icon">
+                                            <i class="fa fa-times"></i>
+                                        </span>
+                                        <span>Annuleren</span>
+                                    </a>
+                                </label>
+                                <button class="button is-danger" type="submit">
+                                   <span class="icon">
+                                        <i class="fa fa-trash"></i>
+                                    </span>
+                                    <span>Verwijderen</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-close is-large" for="delete-confirmation-toggle"></div>
+            </label>
+        </div>
+@endsection
