@@ -16,8 +16,8 @@ class RoleTableSeeder extends Seeder
        $roles = [
            'Beheerder' => [3, 4, 5, 6 ],
            'Webadmin' => [1, 2, 3, 4, 5, 6],
-           'Moderator' => [5, 6],
-           'Gebruiker' => [4]
+           'Moderator' => [1, 3, 5, 6],
+           'Gebruiker' => [1, 3, 5]
         ];
 
         foreach ($roles as $roleName => $rolePermissions) {

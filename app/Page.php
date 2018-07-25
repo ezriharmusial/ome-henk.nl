@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Http\Request;
+
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -47,16 +49,21 @@ class Page extends Model implements HasMedia
         return $this->belongsTo(User::class);
     }
 
-    public function addPost($title, $subtitle, $content, $published)
+    public function addPost(Request $request)
     {
-        $this->posts()->create([
-            'title' => $title,
-            'subtitle' => $subtitle,
-            'content' => $content,
-            'published' => $published,
+        $post = $this->posts()->create([
+            'title' => request('title'),
+            'subtitle' => request('subtitle'),
+            'content' => request('content'),
+            'published' => request('published'),
             'page_id' => $this->id,
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ]);
+
+        if($request->hasFile('featured-image')){
+            $post->addMediaFromRequest('featured-image')->toMediaCollection('featured-images');
+        }
+
     }
 
     public static function pages()

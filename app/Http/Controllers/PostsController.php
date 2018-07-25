@@ -49,17 +49,7 @@ class PostsController extends Controller
             'published' => 'required'
         ]);
 
-
-        $page->addPost(
-            request('title'),
-            request('subtitle'),
-            request('content'),
-            request('published')
-        );
-
-        if($request->hasFile('featured-image')){
-            $post->addMediaFromRequest('featured-image')->toMediaCollection('featured-images');
-        }
+        $page->addPost(request());
 
         return redirect(route('pages.show' , $page->slug))->with('success', 'Artikel aangemaakt.');
     }
