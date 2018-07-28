@@ -47,13 +47,13 @@ class PagesController extends Controller
     {
 
         $this->validate(request(), [
-            'title_icon' => 'required',
+            // 'title_icon' => 'required',
             'title' => 'required',
             'subtitle' => 'required',
             'content' => 'required',
         ]);
 
-        $title_icon = $request['title_icon'];
+        $title_icon = !is_null( $request['title_icon'] ) ? $request['title_icon'] : '';
         $title_icon = str_replace('iconpicker-icon-preview ', '', $title_icon);
         $title_icon = str_replace('fa-icon ', '', $title_icon);
 
