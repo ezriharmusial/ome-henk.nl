@@ -18,7 +18,7 @@
         <div class="field">
             <label class="label">Artikel Subtitel</label>
             <div class="control">
-                <input class="input" id="subtitle" name="subtitle" type="text" placeholder="Subtitel van Artikel" value="{{ $post->subtitle }}" required>
+                <input class="input" id="subtitle" name="subtitle" type="text" placeholder="Subtitel van Artikel" value="{{ $post->subtitle }}">
             </div>
             @if ($errors->has('subtitle'))
             <p class="help is-danger">
