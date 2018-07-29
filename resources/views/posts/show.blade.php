@@ -42,7 +42,7 @@ style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
                 </div>
             </div>
 @endsection
-@section ('footer')
+@section('footer')
         <input id="featured-image-toggle" type="checkbox" />
         <div class="modal" id="featured-image-modal">
             <label for="featured-image-toggle">
@@ -55,5 +55,5 @@ style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
                 <div class="modal-close is-large" for="featured-image-toggle"></div>
             </label>
         </div>
-@endsection
+@append
 

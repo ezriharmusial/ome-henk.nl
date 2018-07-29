@@ -44,7 +44,7 @@ class PostsController extends Controller
 
         $this->validate(request(), [
             'title' => 'required',
-            'subtitle' => 'required',
+            // 'subtitle' => 'required',
             'content' => 'required',
             'published' => 'required'
         ]);
@@ -67,7 +67,7 @@ class PostsController extends Controller
 
         $this->validate(request(), [
             'title' => 'required',
-            'subtitle' => 'required',
+            // 'subtitle' => 'required',
             'content' => 'required',
         ]);
 

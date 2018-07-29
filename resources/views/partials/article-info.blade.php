@@ -37,17 +37,18 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                                     </span>
                                     <span>Bewerken</span>
                                 </a>
-                                <p class="control">
-                                    <label class="button is-outlined is-danger" for="delete-confirmation-toggle">
-                                       <span class="icon">
-                                            <i class="fa fa-trash"></i>
-                                        </span>
-                                        <span>Verwijderen</span>
-                                    </label>
-                                </p>
+                            </p>
+                            <p class="control">
+                                <label class="button is-outlined is-danger" for="delete-confirmation-toggle">
+                                   <span class="icon">
+                                        <i class="fa fa-trash"></i>
+                                    </span>
+                                    <span>Verwijderen</span>
+                                </label>
                             </p>
                         </div>
                     </div>
+
 @section ('footer')
         <input id="delete-confirmation-toggle" type="checkbox" />
         <div class="modal" id="delete-confirmation-modal">
@@ -82,4 +83,4 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                 <div class="modal-close is-large" for="delete-confirmation-toggle"></div>
             </label>
         </div>
-@endsection
+@append
