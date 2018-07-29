@@ -35,7 +35,7 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                                    <span class="icon">
                                         <i class="fa fa-edit"></i>
                                     </span>
-                                    <span>Bewerken</span>
+                                    <span>{{ $articleType }} Bewerken</span>
                                 </a>
                             </p>
                             <p class="control">
@@ -43,7 +43,7 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                                    <span class="icon">
                                         <i class="fa fa-trash"></i>
                                     </span>
-                                    <span>Verwijderen</span>
+                                    <span>{{ $articleType }} Verwijderen</span>
                                 </label>
                             </p>
                         </div>
