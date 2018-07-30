@@ -17,7 +17,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     mix.browserSync(
         {
             proxy: {
-                target: "127.0.0.1:8000",
+                target: "ome-henk.test",
             },
             open: false
         }

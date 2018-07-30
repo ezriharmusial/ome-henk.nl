@@ -1,4 +1,4 @@
-<nav class="navbar is-primary is-fixed-top">
+<nav class="navbar is-primary">
                 <div class="container">
                     <!-- Hidden Checkbox hack trigger for Pure CSS toggle -->
                     <input type="checkbox" id="menu-toggle" class="is-hidden"/>

@@ -16,6 +16,7 @@
   min-width: 3.25rem;
   min-height: 3.25rem;
   text-align: center;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 #menu-toggle:checked ~ .navbar-brand .navbar-burger {
@@ -37,7 +38,8 @@
 .hero {
     .navbar {
 
-        background-color: rgba(0, 209, 178, 0.9) !important;
+        // background-color: rgba(0, 209, 178, 0.9) !important;
+        background-color: rgba(0, 0, 0, 0.1);
     }
     .has-dropdown:hover {
         .navbar-item:not(:hover) {

@@ -1,7 +1,9 @@
 .tabs {
     &.is-boxed {
         li {
-            background-color: rgba(0,209,178,.9);
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+            // color: rgba(0,209,178,.9);
+            // background-color: rgba(0,209,178,.9);
             border-radius: 4px 4px 0 0;
         }
     }

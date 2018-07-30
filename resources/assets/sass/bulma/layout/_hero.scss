@@ -1,8 +1,8 @@
 .hero {
     .subtitle, .title {
-        background-color: rgba(0,209,178,.9);
+        // background-color: rgba(0,209,178,.9);
         padding: 0.25rem .5rem;
         display: table;
-        text-shadow: 1px 2px rgb(0,209,178);
+        text-shadow: 1px 2px rgba(0, 0, 0, 0.4);
     }
 }
