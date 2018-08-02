@@ -98,10 +98,10 @@ const app = new Vue({
             axios.get('/bijlagen/' + type + '?page=' + page).then(result => {
                 this.loading = false;
                 this.files = result.data.data.data;
-                console.log(this.files);
+                // console.log(this.files);
                 this.pagination = result.data.pagination;
             }).catch(error => {
-                console.log(error);
+                // console.log(error);
                 this.loading = false;
             });
 
@@ -197,7 +197,7 @@ const app = new Vue({
                         this.fetchFile(this.activeTab, this.pagination.current_page);
                     })
                     .catch(error => {
-                        console.log(error);
+                        // console.log(error);
                         this.errors = error.response.data.errors;
                         this.showNotification(error.response.data.message, false);
                         this.fetchFile(this.activeTab, this.pagination.current_page);
