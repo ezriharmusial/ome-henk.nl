@@ -1,28 +1,38 @@
 <template>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-2">
-                <img :src="image" class="img-responsive">
+            <div class="field">
+                <label class="label">Header Achtergrond</label>
+                <label for="file">
+                    <figure class="image is-2by1">
+                        <img :src="image" class="img-responsive">
+                    </figure>
+                </label>
+                <div class="file has-name is-right is-fullwidth">
+                    <label class="file-label">
+                        <input type="file" v-on:change="onFileChange" class="file-input" name="page-header" id="file">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fa fa-image"></i>
+                            </span>
+                            <span class="file-label">
+                                Bestanden
+                            </span>
+                        </span>
+                        <span class="file-name"  id="filename">
+                        </span>
+                    </label>
+                </div>
             </div>
-            <div class="col-md-8">
-                <input type="file" v-on:change="onFileChange" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-success btn-block" @click="upload">Upload</button>
-            </div>
-        </div>
-    </div>
 </template>
 <style scoped>
-    img{
+/*    img{
         max-height: 36px;
-    }
+    }*/
 </style>
 <script>
     export default{
         data(){
             return {
-                image: ''
+                image: 'https://via.placeholder.com/640/00d1b2/ffffff/?text=1280px%20*%20640px'
             }
         },
         methods: {
@@ -40,11 +50,6 @@
                 };
                 reader.readAsDataURL(file);
             },
-            upload(){
-                axios.post('/api/upload',{image: this.image}).then(response => {
-
-                });
-            }
         }
     }
 </script>

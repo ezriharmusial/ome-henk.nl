@@ -6,7 +6,7 @@
         </span>
         <span>Pagina bewerken</span>
 @endsection
-@section ('page-header-style')
+@section ('page-header-bg')
 @if ($pageHeader = $page->getFirstMediaUrl('page-headers', 'full'))
 style="background-image: url('{{ $pageHeader }}');background-size: cover;"
 @endif
@@ -17,15 +17,6 @@ voor op Ome-Henk.nl
 @endsection
 
 @section ('content')
-{{-- <h3 class="title">
-    <span class="icon is-medium">
-        <i class="fa fa-edit"></i>
-    </span>
-    <span>Pagina bewerken</span>
-</h3>
-<h4 class="subtitle">
-    <span>voor op Ome-Henk.nl</span>
-</h4> --}}
 <form method="POST" action="{{ route('pages.update', $page->slug) }}" enctype="multipart/form-data">
     {{ method_field('PATCH') }}
     <div class="columns">
@@ -36,17 +27,13 @@ voor op Ome-Henk.nl
             <label class="label">Header Achtergrond</label>
             <div class="field">
                 <label for="file">
-                    <figure class="image is-2by1">
-                    @if ($media = $page->getFirstMedia('page-headers') )
-                        {{ $media('full')}}
-                    @else
-                        <img src="https://via.placeholder.com/640/320/00d1b2/ffffff?text=1280px%20*%20640px">
-                    @endif
+                    <figure class="image">
+                        <img :src="image" ref="imagePreview" data-src="{{ $page->getFirstMediaUrl('page-headers', 'full') }}">
                     </figure>
                 </label>
                 <div class="file has-name is-right is-fullwidth">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="page-header" id="file">
+                        <input type="file" v-on:change="onFileChange" class="file-input" name="page-header" id="file">
                         <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fa fa-image"></i>

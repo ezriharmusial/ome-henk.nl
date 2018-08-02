@@ -6,3 +6,12 @@
 //     border-left-width: 0;
 //     box-shadow: none;
 // }
+
+form {
+  .field {
+    img {
+      cursor: pointer;
+      background-color: $primary;
+    }
+  }
+}

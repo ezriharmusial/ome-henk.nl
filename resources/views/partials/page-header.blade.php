@@ -1,13 +1,3 @@
-{{-- @php
-if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
-    $article = $post;
-} elseif (in_array(Request::route()->getName(), ['pages.show', 'pages.index'])) {
-    $article = $page;
-} else {
-    $article = new \App\Page;
-}
-@endphp
- --}}
  <section class="hero is-primary is-bold @yield('page-header-style')" @yield('page-header-bg')>
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">

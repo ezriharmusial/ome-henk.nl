@@ -49,7 +49,7 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                         </div>
                     </div>
 
-@section ('footer')
+@section ('modal')
         <input id="delete-confirmation-toggle" type="checkbox" />
         <div class="modal" id="delete-confirmation-modal">
             <label for="delete-confirmation-toggle">
@@ -71,7 +71,7 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
                                     </a>
                                 </label>
                                 <button class="button is-danger" type="submit">
-                                   <span class="icon">
+                                    <span class="icon">
                                         <i class="fa fa-trash"></i>
                                     </span>
                                     <span>Verwijderen</span>

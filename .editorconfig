@@ -14,3 +14,7 @@ trim_trailing_whitespace = false
 [*.yml]
 indent_style = space
 indent_size = 2
+
+# JavaScript, JSX, CSS, SCSS, HTML settings
+[*.{js,jsx,css,scss,html}]
+indent_size = 2

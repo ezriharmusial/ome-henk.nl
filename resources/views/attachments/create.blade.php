@@ -12,7 +12,7 @@ Hier uploaden aub
 
 @section ('content')
 <div class="columns">
-    <div class="column is-multilinek">
+    <div class="column is-multiline">
         <form class="box" method="POST" action="{{ route('attachments.store') }}" enctype="multipart/form-data">
             @csrf
             @include('attachments.form')
@@ -53,7 +53,7 @@ Hier uploaden aub
       <button class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
-        <p class="image is-2by1">
+        <p class="image">
             <img src="{{ asset("storage/images/optimized/" . $attachment->filename ) }}" alt="{{$attachment->filename}}">
         </p>
     </section>

@@ -27,13 +27,6 @@ style="background-image: url('{{ $pageHeaderUrl }}');background-size: cover;"
 @endsection
 
 @section ('content')
-{{--                         <h3 class="title">
-                <span class="icon">
-                    <i class="{{ $page->title_icon or "fa fa-wrench" }}"></i>
-                </span>
-                <span>{{ $page->title or "Wij zijn druk bezig" }}</span>
-            </h3>
-            <h4 class="subtitle has-text-weight-light"><span>{{ $page->subtitle or "Om ome-henk.nl voor u gereed te maken" }}</span></h4> --}}
             <div class="columns">
                 <div class="column">
                     @include('pages.article')
@@ -64,7 +57,7 @@ style="background-image: url('{{ $pageHeaderUrl }}');background-size: cover;"
                         <a href="{{ route('posts.show', [$page->slug, $post->slug]) }}" title="{{ $post->title }}" class="box notification is-white tile">
                             {{-- Display Featured Article Image if it is there --}}
                             <div class="tile is-4">
-                                <figure class="tile image is-3by2">
+                                <figure class="tile image">
                                 @if ($media = $post->getFirstMedia('featured-images') )
                                     {{ $media('full')}}
                                 @else

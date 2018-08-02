@@ -1,24 +1,31 @@
 @section ('stylesheets')
 @endsection
 @section ('scripts')
-{{--         <script>
-            var editor = new window.Quill('#content', {
-                modules: { toolbar: '#toolbar' },
-                theme: 'snow'
-            });
-        </script>
- --}}
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
         <script>
-            let defaultOptions = {
-              iconSets: [{
-                name: 'fontAwesome', // Name displayed on tab
-                css: '/css/app.css', // CSS url containing icons rules
-                prefix: 'fa-', // CSS rules prefix to identify icons
-                displayPrefix: 'fa fa-icon'
-                }
-              ]
-            };
+            $('.textarea').summernote({
+                placeholder: $('.textarea').placeholder,
+                minHeight: 200,
+                toolbar: [
+                    ['misc', ['undo', 'redo']],
+                    ['para', ['style']],
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link']],
+                    ['misc', ['codeview', 'fullscreen']],
+                ]
+            });
 
+            let defaultOptions = {
+                iconSets: [{
+                    name: 'fontAwesome', // Name displayed on tab
+                    css: '/css/font-awesome.css', // CSS url containing icons rules
+                    prefix: 'fa-', // CSS rules prefix to identify icons
+                    displayPrefix: 'fa fa-icon'
+                }]
+            };
             bulmaIconpicker.attach('[data-action="iconPicker"]', defaultOptions);
         </script>
 @endsection
@@ -36,19 +43,11 @@
             <p class="help is-danger">
                 {{ $errors->first('title_icon') }}
             </p>
-            {{-- @else
-            <p class="help is-dark">
-                Kies een Icoon voor Pagina Titels en Knoppen.
-            </p> --}}
             @endif
             @if ($errors->has('title'))
             <p class="help is-danger">
                 {{ $errors->first('title') }}
             </p>
-            {{-- @else
-            <p class="help">
-                Een korte bondige titel, max. 3 woorden en max. 20 Letters.
-            </p> --}}
             @endif
 
             <div class="field has-text-weight-light">
@@ -60,10 +59,6 @@
                 <p class="help is-danger">
                     {{ $errors->first('subtitle') }}
                 </p>
-                @else
-                {{-- <p class="help">
-                    Geef een korte aanvullende beschrijving, maximaal 30 Letters.
-                </p> --}}
                 @endif
             </div>
 
@@ -75,17 +70,13 @@
                   <button class="ql-italic">Italic</button>
                 </div> --}}
                 <label class="label">Pagina Inhoud</label>
-                <div class="control content">
-                    <textarea class="textarea" id="content" name="content" placeholder="Pagina inhoud" required>{{ $page->content }}</textarea>
+                <div class="control">
+                    <textarea class="textarea" id="content" name="content" placeholder="Pagina inhoud" required>{!! $page->content !!}</textarea>
                 </div>
                 @if ($errors->has('content'))
                 <p class="help is-danger">
                     {{ $errors->first('content') }}
                 </p>
-                @else
-                {{-- <p class="help">
-                    Plaats hier de tekst of media voor deze pagina.
-                </p> --}}
                 @endif
             </div>
 
@@ -98,37 +89,3 @@
                 <input id="published" type="checkbox" name="published" class="switch is-success is-medium is-rounded is-adaptive" value=1 @if ( $page->published || $page->exists == false ) checked="checked" @endif>
                 <label for="published">Pagina Publiceren</label>
             </div>
-
-
-{{--             <div class="field">
-                <label class="label">Artiekelen aan pagina toevoegen?</label>
-                <div class="control">
-                    <label class="radio">
-                        <input checked="checked" type="radio" name="has_articles" value=0>
-                        Nee
-                    </label>
-                    <br />
-                    <label class="radio">
-                        <input type="radio" id="has_articles" name="has_articles" value=1>
-                        Ja
-                    </label>
-                </div>
-            </div>
-
-
-
-            <div class="field">
-                <label class="label">Publicatie status?</label>
-                <div class="control">
-                    <label class="radio">
-                        <input @if ( $page->published ) checked="checked" @endif type="radio" name="published" value=0>
-                        Concept
-                    </label>
-                    <br />
-                    <label class="radio">
-                        <input @if ( $page->published ) checked="checked" @endif type="radio" name="published" value=1>
-                        Gepubliceerd
-                    </label>
-                </div>
-            </div>
- --}}

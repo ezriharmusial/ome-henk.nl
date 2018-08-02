@@ -1,14 +1,15 @@
-.notification.is-fixed{
-    position: fixed;
-    bottom: 0px;
-    right: 0;
-    margin: 1rem;
-    z-index: 9999;
-    animation: cssAnimation 10s forwards;
-    animation-fill-mode: forwards;
+.notification.is-fixed {
+  position: fixed;
+  bottom: 0px;
+  right: 0;
+  margin: 1rem;
+  z-index: 9999;
+  animation: cssAnimation 10s forwards;
+  animation-fill-mode: forwards;
 }
+
 @keyframes cssAnimation {
-    0%   {opacity: 1;}
-    90%  {opacity: 1;}
-    100% {opacity: 0;}
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
 }

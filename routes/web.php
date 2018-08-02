@@ -16,8 +16,18 @@ Auth::routes();
 Route::view('/privacy', 'static.privacy')->name('privacy-statement');
 
 Route::group(['middleware' => ['auth']], function() {
+
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
+
+    Route::get('/bijlagen/', 'FileController@index');
+
+    Route::get('/bijlagen/{type}/{id?}', 'FileController@show');
+
+    Route::post('bijlagen/aanmaken', 'FileController@store');
+    Route::post('bijlagen/{id}/bewerken', 'FileController@edit');
+    Route::post('bijlagen/{id}/verwijderen', 'FileController@destroy');
+
     // Dashboard?
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/profiel', 'Auth\ProfileController@edit')->name('profile');
@@ -27,7 +37,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/pagina', 'PagesController@store')->name('pages.store');
     Route::get('/pagina/aanmaken', 'PagesController@create')->name('pages.create');
     Route::get('/{page}/bewerken', 'PagesController@edit')->name('pages.edit');
-    Route::delete('/{page}/verwijderen/', 'PagesController@destroy')->name('pages.destroy');
+    Route::delete('/{page}/verwijderen', 'PagesController@destroy')->name('pages.destroy');
     Route::match(['put', 'patch'], '/{page}', 'PagesController@update')->name('pages.update');
 
     // Pagina Artikeltjes

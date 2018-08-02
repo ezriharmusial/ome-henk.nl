@@ -23,15 +23,6 @@ voor op de "{{ $page->title}}" pagina
 @endsection
 
 @section ('content')
-{{-- <h3 class="title">
-    <span class="icon">
-        <i class="fa fa-plus"></i>
-    </span>
-    <span>Nieuw Artikel</span>
-</h3>
-<h4 class="subtitle">
-    <span>voor op de "{{ $page->title}}" pagina</span>
-</h4> --}}
 <form method="POST" action="{{ route('posts.store', $page) }}" enctype="multipart/form-data">
     <div class="columns">
         <div class="column">
@@ -41,17 +32,13 @@ voor op de "{{ $page->title}}" pagina
             <label class="label">Artikel plaatjes</label>
             <div class="field">
                 <label for="file">
-                    <figure class="image is-3by2">
-                    @if ($media = $post->getFirstMedia('featured-images') )
-                        {{ $media('full')}}
-                    @else
-                        <img src="https://via.placeholder.com/640/00d1b2/ffffff?text=1280px%20*%20960px">
-                    @endif
+                    <figure class="image">
+                        <img :src="image" ref="imagePreview" data-src="{{ $post->getFirstMediaUrl('featured-images', 'full') }}">
                     </figure>
                 </label>
                 <div class="file has-name is-right is-fullwidth">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="featured-image" id="file">
+                        <input type="file" v-on:change="onFileChange" class="file-input" name="featured-image" id="file">
                         <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fa fa-image"></i>

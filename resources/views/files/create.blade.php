@@ -44,6 +44,9 @@ Hier uploaden aub
 
 
 </div>
+@endsection
+
+@section ('modal')
 @foreach ($media as $medium)
 <div class="modal">
   <div class="modal-background"></div>
@@ -53,7 +56,7 @@ Hier uploaden aub
       <button class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
-        <p class="image is-2by1">
+        <p class="image">
             <img src="{{ asset("storage/images/optimized/" . $medium->filename ) }}" alt="{{$medium->filename}}">
         </p>
     </section>

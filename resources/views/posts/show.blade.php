@@ -28,7 +28,7 @@ style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
                 <div class="column is-one-third">
                     @if ($media = $post->getFirstMedia('featured-images') )
                     <label class="has-zoom-in-cursor" for="featured-image-toggle">
-                        <figure class="image is-3by2">
+                        <figure class="image">
                             {{ $media('full') }}
                         </figure>
                     </label>
@@ -42,13 +42,13 @@ style="background-image: url('{{ $featuredImageUrl }}');background-size: cover;"
                 </div>
             </div>
 @endsection
-@section('footer')
+@section('modal')
         <input id="featured-image-toggle" type="checkbox" />
         <div class="modal" id="featured-image-modal">
             <label for="featured-image-toggle">
                 <div class="modal-background"></div>
                 <div class="modal-content">
-                    <figure class="image is-3by2">
+                    <figure class="image">
                         {{ $post->getFirstMedia('featured-images') }}
                     </figure>
                 </div>

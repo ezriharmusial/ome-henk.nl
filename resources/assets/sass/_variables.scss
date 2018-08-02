@@ -7,6 +7,27 @@
 $spacer: 2rem;
 
 /** Colors */
+
+// $sustainable-ter:         hsla(37, 32%, 63%, 0.7); //#bfa882
+// $sustainable-bis:         hsla(37, 44%, 72%,  0.7); //#d7bf99
+// $sustainable:             hsla(39, 46%, 73%,  0.7); //#dac49b
+// $sustainable-red:         hsla(359, 100%, 71%,  0.9); //#ff696b
+// $sustainable-blue:        hsla(203, 100%, 50%,  0.9); //#009eff
+// $sustainable-orange:      hsla(25, 64%, 58%,  0.9); //#d88950
+// $sustainable-green:       hsla(110, 62%, 60%,  0.9); //#6fd859
+// $sustainable-yellow:      hsla(59, 82%, 44%,  0.9); //#ccc914
+// $sustainable-purple:      hsla(243, 66%, 62%,  0.9); //#625cde
+// $sustainable-black:       hsl(345, 6%, 13%); //#231f20
+// $sustainable-background: "../images/achtergrond.png";
+
+// $primary: $sustainable-green;
+// $danger: $sustainable-red;
+// $warning: $sustainable-orange;
+// $success: $sustainable-green;
+// $info: $sustainable-blue;
+// $link: $sustainable-purple;
+
+// $black:        $sustainable-black;
 $black:        hsl(0, 0%, 4%) !default
 $black-bis:    hsl(0, 0%, 7%) !default
 $black-ter:    hsl(0, 0%, 14%) !default
@@ -30,10 +51,6 @@ $blue:         hsl(217, 71%,  53%) !default
 $purple:       hsl(271, 100%, 71%) !default
 $red:          hsl(348, 100%, 61%) !default
 
-// $primary-invert: $black !default;
-// $secondary-invert: $black !default;
-// $calm-invert: $white !default;
-
 @import "../../../node_modules/bulma/sass/utilities/derived-variables.sass";
 @import "../../../node_modules/bulma/sass/utilities/animations.sass";
 @import "../../../node_modules/bulma/sass/utilities/mixins.sass";
@@ -50,10 +67,10 @@ $red:          hsl(348, 100%, 61%) !default
 // );
 
 /** Backgrounds */
-// $background: $grey-darker;
-// $body-background-color: $black;
-// $body-color: $light;
-// $footer-background-color: $success;
+// $background: $sustainable-bis;
+// $body-background-color: $sustainable;
+// $body-color: $sustainable-black;
+// $footer-background-color: $sustainable-ter;
 
 /** Text */
 // $text: $light;
