@@ -63,14 +63,8 @@
             </div>
 
             <div class="field">
-                {{-- <label class="label">Pagina Inhoud</label> --}}
-                <!-- Create the toolbar container -->
-{{--                 <div id="toolbar">
-                  <button class="ql-bold">Bold</button>
-                  <button class="ql-italic">Italic</button>
-                </div> --}}
                 <label class="label">Pagina Inhoud</label>
-                <div class="control">
+                <div class="control content">
                     <textarea class="textarea" id="content" name="content" placeholder="Pagina inhoud" required>{!! $page->content !!}</textarea>
                 </div>
                 @if ($errors->has('content'))

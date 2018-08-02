@@ -45,7 +45,7 @@
  --}}
         <div class="field">
             <label class="label">Artikel Inhoud</label>
-            <div class="control">
+            <div class="control content">
                 <textarea class="textarea" id="content" name="content" placeholder="Artikel inhoud" required>{!! $post->content !!}</textarea>
             </div>
             @if ($errors->has('content'))
