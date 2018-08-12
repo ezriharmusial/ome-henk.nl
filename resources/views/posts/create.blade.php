@@ -68,3 +68,7 @@ voor op de "{{ $page->title}}" pagina
     </div>
 </form>
 @endsection
+
+@section ('scripts')
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+@endsection
