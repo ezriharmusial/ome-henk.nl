@@ -140,8 +140,3 @@ Overzicht van alle Bijlagen ooit geupload
             @include('files.modal')
         @endauth
 @endsection
-
-@section ('scripts')
-        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-@endsection
-

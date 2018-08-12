@@ -79,8 +79,3 @@ Hier uploaden aub
 
 @endforeach
 @endsection
-
-@section ('scripts')
-        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-@endsection
-

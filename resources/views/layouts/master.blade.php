@@ -15,6 +15,7 @@
         @yield('modal')
         <!-- SCRIPTS -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         @yield('scripts')
     </body>
 </html>
