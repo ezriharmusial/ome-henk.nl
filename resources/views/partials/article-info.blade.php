@@ -10,7 +10,7 @@ if ( in_array(Request::route()->getName(), ['posts.show', 'posts.index'])  ){
 @endphp
                     @if ( $article->published != 1 )
                     <div class="notification is-info content">
-                        <span class="fa fa-info"> </span> Deze {{ $articleType }} is niet gepubliceerd en daarom niet zichtbaar voor anderen.
+                        <span class="fa fa-info"> </span> {{ $articleType }} is niet gepubliceerd en daarom niet zichtbaar voor anderen.
                     </div>
                     @endif
 

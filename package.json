@@ -19,6 +19,7 @@
     "vue": "^2.5.7"
   },
   "dependencies": {
+    "@vue/cli": "^3.0.3",
     "bulma": "^0.7.1",
     "bulma-iconpicker": "^2.1.0",
     "bulma-switch": "^2.0.0",
